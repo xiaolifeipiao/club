@@ -1,0 +1,49 @@
+
+<div class="page-sidebar" id="sidebar">
+    <!-- Page Sidebar Header-->
+    <div class="sidebar-header-wrapper">
+        <input type="text" class="searchinput" />
+        <i class="searchicon fa fa-search"></i>
+        <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+    </div>
+    <!-- /Page Sidebar Header -->
+    <!-- Sidebar Menu -->
+    <ul class="nav sidebar-menu">
+       
+        <li class="active open">
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon fa fa-home"></i>
+                <span class="menu-text"> 社团管理 </span>
+
+                <i class="menu-expand"></i>
+            </a>
+
+            <ul class="submenu">
+                <li class="{$flag==1? 'active' : ''}">
+                    <a href="index1">
+                        <span class="menu-text">用户管理</span>
+                    </a>
+                </li>
+              
+                <li class="{$flag==2? 'active' : ''}">
+                    <a href="index2">
+                        <span class="menu-text">社团审核</span>
+                    </a>
+                </li>
+                
+                <li class="{$flag==3? 'active' : ''}">
+                    <a href="index3">
+                        <span class="menu-text">文章发布</span>
+                    </a>
+                </li>
+                 <li class="{$flag==4? 'active' : ''}">
+                    <a href="index4">
+                        <span class="menu-text">活动统计</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        
+    </ul>
+    <!-- /Sidebar Menu -->
+</div>

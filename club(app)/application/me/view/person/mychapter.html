@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+</head>
+<body>
+<ul class="am-avg-sm-3 am-thumbnails am-text-primary" style="margin:0px; background:#01AAED; color: white;">
+  <li><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" onclick="window.location.href='index.html';"></span></li>
+  <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;我的关注</span></li>
+  
+</ul>  
+<ul style="width:95%" class="am-list am-list-border am-center" id="list_div">
+               <!-- <li>
+                <a href="#" class="am-padding-0">
+                    <div class="am-g am-text-primary">
+                       <div class="am-u-sm-3 am-padding-0">
+        
+                          <img  class="am-radius am-img-thumbnail am-padding-0" style="border:0px;" alt="140*140" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="70px" height="70px" />
+        
+                        </div>
+                        <div class="am-u-sm-9">
+                              <div class="am-margin-top-0">
+                                       <span>吉他社</span></br>
+                                       <span class="am-text-xs"><span class="am-icon-history"></span>&nbsp;11月30日</span></br>
+                                       <div class="am-text-xs am-text-truncate am-padding-0" style="width: 200px;">吉他社的介绍ashcvan anaskmv JKJK  kads</div>
+         
+                                       </div>
+                                </div>
+                        </div>
+                </a>
+               </li> 
+               <li>
+                <a href="#" class="am-padding-0">
+                    <div class="am-g am-text-primary">
+                       <div class="am-u-sm-3 am-padding-0">
+        
+                          <img  class="am-radius am-img-thumbnail am-padding-0" style="border:0px;" alt="140*140" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="70px" height="70px" />
+        
+                        </div>
+                        <div class="am-u-sm-9">
+                              <div class="am-margin-top-0">
+                                       <span>吉他社</span></br>
+                                       <span class="am-text-xs"><span class="am-icon-history"></span>&nbsp;11月30日</span></br>
+                                       <div class="am-text-xs am-text-truncate am-padding-0" style="width: 200px;">吉他社的介绍ashcvan anaskmv JKJK  kads</div>
+         
+                                       </div>
+                                </div>
+                        </div>
+                </a>
+               </li>  -->
+           </ul>
+
+    
+      
+              
+          
+    
+        
+
+<!--在这里编写你的代码-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      refreshMeList();
+    });
+
+    function refreshMeList(){
+        $.post('getMychapter',{},function(rs){
+            var content = '';
+            console.log(rs);
+            if(rs.success){
+              var coopdata = rs.data;   
+              for(var i = 0;i<coopdata.length;i++){
+                var time=coopdata[i].Start_time.substring(0,10);
+                console.log(time);
+               content+=' <li id="aid'+coopdata[i].Club_id+'"  class="get">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img  style="width: 70px; height:70px; class="am-radius am-img-thumbnail am-padding-0" style="border:0px;" alt="140*140" src="'+'__UPLOAD__/'+coopdata[i].Image+'" width="70px" height="70px" />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                       <span><font color="#000">'+coopdata[i].Club_name+'</font></span></br>\
+                                       <div class="am-text-xs am-text-truncate am-padding-0" style="width: 200px;"><font color="#000">'+coopdata[i].Content+'</font></div>\
+                                       <span class="am-text-xs"><font color="#a2a2a2"><span class="am-icon-history"></font></span>&nbsp;<font color="#000">'+time+'</font></span></br>\
+                                       </div>\
+                                </div>\
+                        </div>\
+              </li>';
+            }
+            if(content==""){
+                $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'社团.png" />')
+                return;
+
+              }
+              $("#list_div").html(content);
+              $('.get ').on('click',function(){ 
+                var aid = $(this).attr("id");
+                var encodeData = window.btoa(aid);
+                console.log($(this).attr("id"));  
+                window.location.href='{:url("coop/Index/shetuan2")}?aid='+encodeData;
+                }); 
+              // 根据用户账户去查询该用户对应的权限（普通，社长）
+              // if（普通）
+              // {
+              //    普通页面
+              // }
+              // else
+              // {
+              // 社长页面
+              // }
+            }
+        });
+    }
+</script>
+
+<script src="__JS__/amazeui.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+  
+  
+
+
+

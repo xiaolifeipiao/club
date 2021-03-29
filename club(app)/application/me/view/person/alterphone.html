@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+    
+</head>
+<body>
+  <!-- <ul class="am-nav" style="background:#01AAED; color: white; height:40px;">
+  <li class="am-active">
+      <span onclick="javascript:history.back()" class="am-icon-angle-left am-icon-md am-margin-left-sm am-margin-top-xs">&nbsp;设置密码</span>
+      <span class="am-fr am-margin-right-sm am-margin-top-xs">完成</span>
+  </li>
+</ul> -->
+<ul class="am-avg-sm-3 am-thumbnails am-text-primary" style="margin:0px; background:#01AAED; color: white;">
+  <li><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" onclick="javascript:history.back()"></span></li>
+  <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;绑定手机号</span></li>
+  
+</ul>
+
+  <form class="am-form am-form-horizontal">
+   <fieldset class="am-margin-bottom-0 am-margin-top-xl">
+    
+    <div class="am-form-group">
+      
+      <input type="text" id="phone" class="js-pattern-mobile"
+             placeholder="输入手机号" />
+    </div>
+  </fieldset>
+
+  <div class="am-form-group">
+    <div class="am-u-sm-6">
+      <input type="password"  class="input-val" value="" id="doc-ipt-pwd-2" placeholder="请输入验证码">
+    </div>
+    <label  class="am-u-sm-6 am-form-label am-padding-top-0">
+<canvas id="canvas" width="100" height="37"></canvas>
+    </label>
+    
+  </div>
+
+
+  <div class="am-form-group">
+    <div class="am-u-sm-10 ">
+      <button type="button" id="sure" class="am-btn am-btn-default">提交</button>
+    </div>
+  </div>
+</form>  
+    
+    
+    
+  
+
+
+
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-failure">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      修改失败！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      修改成功！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-phone">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      电话为空哦！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-null">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      请输入验证码！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-err">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      验证码不正确，请重新输入！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-m">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      手机号输入不正确！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+var show_num = [];
+draw(show_num);
+    
+$("#canvas").on('click',function(){
+    draw(show_num);
+})
+$("#sure").on('click',function(){
+    var phone=$('#phone').val();
+     if(phone==""){
+      $('#my-alert-phone').modal('open');
+    }else{
+      let reg = /^1((3|5|8){1}\d{1}|70)\d{8}$/;
+                    
+      if (reg.test(phone)){
+          var val = $(".input-val").val().toLowerCase();
+          var num = show_num.join("");
+          if(val==''){
+            $('#my-alert-null').modal('open');
+          }
+          else if(val == num){
+            $.post('updateUserPhone',{phone:phone},function(e){
+                if(e.data==1){
+                  $('#my-alert-success').modal('open');
+                  $("#phone").val('');
+                  $(".input-val").val('');
+                  
+                }
+                else{
+                    $('#my-alert-failure').modal('open');
+                   
+                }
+            })
+            
+    
+          }else{
+            $('#my-alert-err').modal('open');
+            $(".input-val").val('');
+            draw(show_num);
+          }
+    
+      }
+    else{
+        $('#my-alert-m').modal('open');
+        $("#phone").val('');
+      }
+    }
+    
+    
+})
+})
+    
+function draw(show_num) {
+var canvas_width=$('#canvas').width();
+var canvas_height=$('#canvas').height();
+var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
+canvas.width = canvas_width;
+canvas.height = canvas_height;
+var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+var aCode = sCode.split(",");
+var aLength = aCode.length;//获取到数组的长度
+    
+for (var i = 0; i <= 3; i++) {
+    var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
+    var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
+    var txt = aCode[j];//得到随机的一个内容
+    show_num[i] = txt.toLowerCase();
+    var x = 10 + i * 20;//文字在canvas上的x坐标
+    var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
+    context.font = "bold 23px 微软雅黑";
+    
+    context.translate(x, y);
+    context.rotate(deg);
+    
+    context.fillStyle = randomColor();
+    context.fillText(txt, 0, 0);
+    
+    context.rotate(-deg);
+    context.translate(-x, -y);
+}
+for (var i = 0; i <= 5; i++) { //验证码上显示线条
+    context.strokeStyle = randomColor();
+    context.beginPath();
+    context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+    context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+    context.stroke();
+}
+for (var i = 0; i <= 30; i++) { //验证码上显示小点
+    context.strokeStyle = randomColor();
+    context.beginPath();
+    var x = Math.random() * canvas_width;
+    var y = Math.random() * canvas_height;
+    context.moveTo(x, y);
+    context.lineTo(x + 1, y + 1);
+    context.stroke();
+}
+}
+  //得到随机的颜色值  
+function randomColor() {
+var r = Math.floor(Math.random() * 256);
+var g = Math.floor(Math.random() * 256);
+var b = Math.floor(Math.random() * 256);
+return "rgb(" + r + "," + g + "," + b + ")";
+}
+</script>
+</body>
+</html>

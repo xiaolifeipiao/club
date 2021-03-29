@@ -1,0 +1,270 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+
+    
+
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style type="text/css">
+    input{
+      background-color: transparent; border:0px;
+    }
+    </style>
+
+    
+</head>
+<body>
+  <ul class="am-avg-sm-3 am-thumbnails " style="margin:0px; background:#01AAED; color: white;">
+  <li><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" onclick="javascript:history.back()"></span></li>
+  <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;我的资料</span></li>
+  
+</ul>
+  
+<div  style="background-image: url(__IMG__/1.jpg) ;width:100%;height:100%;background-size:100% 100%;">
+ <hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-top-0" />
+  <div class="am-g am-margin-bottom-sm">
+    <div class=" am-padding-right-0" style="color: white;">
+        
+            <a href="alterpersonimage.html"> <img style="width: 120px; height: 120px;"  id="imgs" class="am-circle am-img-thumbnail am-center" alt="140*140" src="__IMG__/p2.jpg"  /></a>
+            <div class="am-text-xl am-text-truncate am-center" style="width: 150px;  text-align:center" id="user-name"></div>
+         <a href="altersignature.html" style="color: white;">  <div  class="am-text-xs am-text-truncate am-center" style="width: 150px; text-align:center" id="signatrue"></div></a>
+
+        
+    </div>
+  </div>
+</div>
+
+
+<div class="am-margin-top-0" >
+<ul class="am-list am-margin-top-0" >
+  <li><a href="alterpersonname.html" style="color: #000;">&nbsp;&nbsp;&nbsp;昵称<span id="user-name1" class="am-fr am-padding-right-lg">
+  </span></a></li>
+  <li><a id="a-sex" href="#" data-am-modal="" style="color: #000;">&nbsp;&nbsp;&nbsp;性别<span id="sex" class="am-fr am-padding-right-lg">
+  </span>
+  </a></li>
+  <li><a href="alterpersoncollege.html" style="color: #000;">&nbsp;&nbsp;&nbsp;学院<span  id="college" class="am-fr am-margin-right-lg">
+  </span>
+  </a></li>
+  <li><a href="alterpersonmajor.html" style="color: #000;">&nbsp;&nbsp;&nbsp;专业<span  id="major" class="am-fr am-padding-right-lg"> 
+  </span></a></li>
+  <li><a href="alterpersonlive.html" style="color: #000;">&nbsp;&nbsp;&nbsp;爱好 <span id="live" class="am-fr am-padding-right-lg" >
+</span>
+   </a>
+ </li>
+
+</ul>
+
+
+</div>
+<div class="am-modal-actions" id="my-actions">
+  <div class="am-modal-actions-group">
+    <button id="sure" class="am-btn am-btn-secondary am-btn-block" data-am-modal-close>性别</button>
+  </div>
+  <div class="am-modal-actions-group">
+    <ul class="am-list">
+      <li id="li-nv" class="am-modal-actions-danger"><a href="#">女</a></li>
+      <li id="li-nan" class="">
+        <a href="#">男</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="am-modal-actions" id="me-actions">
+  
+  <div class="am-modal-actions-group">
+    <ul class="am-list">
+      <li id="li-photoalbum" class="am-modal-actions-danger"><a href="#">从相册选择图片</a>
+        <!-- <form action="upload" enctype="multipart/form-data" method="post">
+            <input type="file" name="image" /><br> 
+            <input type="submit" value="上传" /> 
+        </form>  -->
+        
+          
+       
+      </li>
+      <li id="li-photograph" class="">
+        <a href="#">拍照</a>
+      </li>
+    </ul>
+  </div>
+  <div class="am-modal-actions-group">
+    <button id="sure1" class="am-btn am-btn-secondary am-btn-block" data-am-modal-close>取消</button>
+  </div>
+</div>
+<!--图片上传框-->
+<div class="am-modal am-modal-no-btn up-frame-bj " tabindex="-1" id="doc-modal-1">
+  <div class="am-modal-dialog up-frame-parent up-frame-radius">
+  <div class="am-modal-hd up-frame-header">
+     <label>修改头像</label>
+    <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+  </div>
+  <div class="am-modal-bd  up-frame-body">
+    <div class="am-g am-fl">
+    <div class="am-form-group am-form-file">
+      <div class="am-fl">
+      <button type="button" class="am-btn am-btn-default am-btn-sm">
+        <i class="am-icon-cloud-upload"></i> 选择要更改的图片</button>
+      </div>
+      <input type="file" id="inputImage">
+    </div>
+    </div>
+    <div class="am-g am-fl" >
+    <div class="up-pre-before up-frame-radius">
+      <img alt="" src="" id="image" >
+    </div>
+    <div class="up-pre-after up-frame-radius">
+    </div>
+    </div>
+    <div class="am-g am-fl">
+    <div class="up-control-btns">
+      <span class="am-icon-rotate-left"  onclick="rotateimgleft()"></span>
+      <span class="am-icon-rotate-right" onclick="rotateimgright()"></span>
+      <span class="am-icon-check" id="up-btn-ok" url="admin/user/upload.action"></span>
+    </div>
+    </div>
+    
+  </div>
+  </div>
+</div>
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">修改头像
+      <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+    </div>
+    <div class="am-g am-center">
+    <div class="am-form-group am-form-file">
+      <div class="am-fl">
+      <button type="button" class="am-btn am-btn-default am-btn-sm">
+        <i class="am-icon-cloud-upload"></i> 选择要更改的图片</button>
+      </div>
+      <input type="file" id="inputImage">
+    </div>
+    <div class="am-modal-bd">
+      
+    </div>
+  </div>
+</div>
+<!-- confirm昵称 -->
+
+  
+<!--在这里编写你的代码-->
+
+
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+     
+
+      
+      refreshPerson();
+      $('#sex').on('click',function(){
+          $('#a-sex').attr({"data-am-modal":"{target: '#my-actions'}"});
+           $('#li-nv').click(function(){
+            $('#li-nv').attr({"class":"am-modal-actions-danger"});
+            $('#li-nan').attr({"class":""});
+            var sex=0;
+             $.post('updateUserSex',{"sex":sex},function(data){
+              if(data.success){
+                location.reload();
+              }
+             });
+        });
+          $('#li-nan').click(function(){
+            $('#li-nan').attr({"class":"am-modal-actions-danger"});
+            $('#li-nv').attr({"class":""});
+            var sex=1;
+            $.post('updateUserSex',{"sex":sex},function(data){
+               if(data.success){
+                location.reload();
+              }
+            }); 
+          });
+
+      }).error(function(){
+          $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'异常.png" />')
+        });         
+    });
+     
+//   function uploadFile(obj, type) {
+ 
+//   $.ajaxFileUpload({
+//     url : "http://localhost:8081/ws2/servlet/fileUpload",
+//     secureuri : false,// 一般设置为false
+//     fileElementId : "fileUpload"+type,// 文件上传表单的id <input type="file" id="fileUpload" name="file" />
+//     dataType : 'json',// 返回值类型 一般设置为json
+//     data: {'type': type},
+    
+//     success : function(data) // 服务器成功响应处理函数
+//     {
+//                 },
+//     error : function(data)// 服务器响应失败处理函数
+//     {
+//       console.log("服务器异常");
+//     }
+//   });
+//   return false;
+// }
+
+    function refreshPerson(){
+        $.post('getUserList1',{},function(data){
+            
+            if(data.success){
+                var data = data.data;
+                $('#user-name').text(data[0].Nickname);
+                $('#user-name1').text(data[0].Nickname);
+                $('#signatrue').text(data[0].Signature);
+                $('#signatrue1').text(data[0].Signature);
+                $('img').attr({"src":'__UPLOAD__/'+data[0].image});
+                console.log('__UPLOAD__/'+data[0].image);
+                if(data[0].Gender==1){
+                  $('#sex').text("男");
+                }
+                else
+                  $('#sex').text("女");
+                  $("#college").text(data[0].College_name);
+                  $("#major").text(data[0].Major_name);
+                  $("#live").text(data[0].live);
+                
+            }
+        });
+    }
+    
+</script>
+</body>
+</html>

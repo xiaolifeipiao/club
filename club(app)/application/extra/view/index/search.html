@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+</head>
+<body style="background-color: #FFF;">
+  <div class="nav_search am-margin-top-sm">
+         <div class="am-input-group am-input-group-primary">
+          <span class="am-input-group-btn">
+            <button class="am-btn am-btn-primary am-round" type="button"><span class="am-icon-search"></span></button>
+          </span>
+          <input id="nameInput" autofocus="autofocus" type="search" class="am-form-field am-round " placeholder="输入关键字以搜索"/>
+          <span class="am-input-group-btn" id="btnRemove">
+                  <button id="btnSubmit" class="am-btn am-btn-primary am-round" type="button"><span>取消</span></button>
+          </span>
+        </div> 
+    </div>
+    <ul class="am-list am-list-border" id="list_div">
+               
+    </ul>
+    
+    <img id="imgs" src="__IMG__/search.png" class="am-img-responsive" alt=""/>
+
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#imgs").hide();
+  $("#nameInput").trigger("click").focus();
+  $("#nameInput").on('keypress',function(e) {
+                var keycode = e.keyCode;
+                var searchName = $(this).val();
+                if(keycode=='13') {
+                    e.preventDefault();  
+                    //请求搜索接口
+                    console.log( $(this).val());
+                    if($(this).val()!=''){
+                      $.post('getSearchList',{searchName:searchName},function(rs){
+                      console.log(rs.data.length);
+                      var content = '';
+                      var time;
+                      if(rs.data.length>0){
+                        $("#imgs").hide();
+                        $("#list_div").show();
+                        for(var i=0;i<rs.data.length;i++){
+                          time=rs.data[i].Activity_time.substring(5,10);
+                          content+='<li id="aid'+rs.data[i].Activity_ID+'" style="box-shadow:4px 4px 10px  gray ;" class="get am-margin-top-xl am-margin-left-sm am-margin-right-sm">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="'+'__UPLOAD__/'+rs.data[i].Article_image+'"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 200px;"><strong><font color="black">'+rs.data[i].Activity_title+'</font></strong></div><span class=""><font color="#a2a2a2"><span class="am-icon-send"></span></font>&nbsp;<font color="black">'+rs.data[i].Club_name+'</font></span></br><span class="am-text-sm"><font color="#a2a2a2"><span class="am-icon-history"></span></font>&nbsp;&nbsp;<font color="black">'+time+'</font></span><span  class="am-fr am-padding-left-xs am-padding-right-xs "><font color="white">'+rs.data[i].Category_title+'</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                        }
+                        $("#list_div").html(content);
+                        $('.get ').on('click',function(){ 
+                        var aid = $(this).attr("id");
+                        var encodeData = window.btoa(aid);
+                          console.log($(this).attr("id"));  
+                          window.location.href='activity.html?aid='+encodeData;
+         
+
+        });            
+                      }
+                      else
+                      {
+                       $("#list_div").hide(); 
+                         $("#imgs").show();
+                         
+                      }
+
+                    })
+                    }
+                    else{
+                      //为空处理
+                      // console.log('为空 ');
+                      $("#list_div").hide();
+                      $("#imgs").show();
+                    }
+                    
+                      }
+                    
+                
+         });
+
+      var flag=true;
+      if(flag){
+        $("#btnRemove").detach();
+        flag=false;
+     }
+      if($("#btnRemove").length == 0){
+             $("<span class=\"am-input-group-btn\" id=\"btnRemove\"><button id=\"btnSubmit\" class=\"am-btn am-btn-primary am-round\" type=\"button\"><span>取消</span></button></span>").insertAfter("#nameInput");
+           }
+             //按钮提交
+             $("#btnSubmit").click(function(){
+                  window.location.href='index.html';
+                  $("#btnRemove").detach();
+             });
+});
+    
+   
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

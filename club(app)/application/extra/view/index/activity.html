@@ -1,0 +1,253 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+    <link rel="stylesheet" href="__CSS__/heartstyle.css"/>
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+</head>
+<body style="background-color: #F0F0F0;">
+<ul class="am-avg-sm-3 am-thumbnails am-margin-bottom-xs am-text-primary " style="margin:0px; background: #01AAED; color: white;">
+  <li><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" onclick="window.location.href='index.html';"></span></li>
+  <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;活动详情</span></li>
+</ul>
+<div style="background: #FBFBFF">
+<img id="imgs" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555738584&di=4c4ee84f68e9b3f87cc69083db15640f&imgtype=jpg&er=1&src=http%3A%2F%2Fbpic.ooopic.com%2F16%2F84%2F26%2F16842653-32e024ef2b266072aa39ead1391d4212-0.jpg" alt=""/ width="100%" style="height: 200px">
+<div class="am-margin-top-0">
+<div class="am-g">
+  <div class="am-u-sm-8"><span id="activityname" class=" am-margin-left-xs am-text-xxl " style="font-weight: 600 ;margin-top: 15px" >&nbsp;</span><span class="am-padding-left-sm am-padding-right-xs am-badge am-badge-default"><font color="white" id="clubname"></font></span>
+  
+  </div>
+  <div class="am-u-sm-2">
+  <span class="likeCount am-fr am-text-xl" style="margin-top: 14px;margin-right: -20px;color: gray" id="likeCount">0</span>
+  </div>
+  <div class="am-u-sm-2">
+    
+  <span " class="heart am-fr " style="margin-top: -25px;margin-right: -10px" id="like" rel="like"></span>
+  </div>
+  
+</div>
+
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+<div class="am-g am-text-sm" >
+
+  <div class="am-u-sm-4" style="border-left:5px solid #8600FF;margin-left:10px;">
+    <p class="am-margin-0">活动时间</p>
+    <p class="am-margin-0">活动地点</p>
+    <p class="am-margin-0"></p>
+    <p class="am-margin-0">报名人数</p>
+  </div>
+  <div class="am-u-sm-7">
+    <p id="time" class="am-margin-0">2018-02-25  08:25-10:00</p>
+    <p id="address" class="am-margin-0">电子工程职业学院</p>
+    <p id="status" class="am-margin-0">电子工程职业学院</p>
+    <p id="rennumer" class="am-margin-0">99</p>
+  </div>
+</div>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+<div class="am-margin-left-sm am-margin-right-sm">
+  <h5 class="">活动简绍</h5>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-top-0" />
+  <p id="intro"></p>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+<button id="sure" data-am-modal=""  type="submit" rel="ok" class="am-btn am-btn-block am-btn-warning am-round  am-center ">我要报名</button>
+
+</div>
+</div>
+<!-- 收藏成功的model -->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"><span class="am-icon-md am-icon-check-circle am-icon-btn am-success"></span></div>
+    <div class="am-modal-bd">
+      收藏成功
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<!-- 取消收藏model -->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-cancel">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"><span class="am-icon-md am-icon-check-circle am-icon-btn am-success"></span></div>
+    <div class="am-modal-bd">
+      取消收藏
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+
+
+var aid = 0;
+$(document).ready(function(){
+  var paramsString = window.location.search;
+ paramsString  = paramsString.substring(5);
+ aid = window.atob(paramsString).substring(3);
+  console.log(aid);
+  refreshinfo();
+
+  $.post('getMycollectNumber',{aid:aid},(data)=>{
+    // console.log(data.data1.id)
+    if(data.data1!=null){
+      $("#like").css("background-position","");
+      $("#like").addClass("heartAnimation").attr("rel","unlike");
+       
+    }
+    else{
+      $("#like").removeClass("heartAnimation").attr("rel","like");
+      $("#like").css("background-position","left");
+     
+    }
+    $('#likeCount').text(data.data);
+  })
+
+
+$('#sure').on('click',function(){
+  $.post("getUserId",{},function(e){
+    console.log(e)
+    if(e!=""){
+        $.post('myApply',{aid:aid},function(rs){
+          refreshinfo();
+
+        }); 
+    }
+    else{
+     window.location.href='{:url("me/Index/login")}';
+    }
+  });
+});
+
+
+$('.heart').on("click",function()
+      { 
+        $.post("getUserId",{},function(e){
+          if(e!=""){
+            var flag=1;
+            var Count=parseInt($("#likeCount").html());
+            // var activity_id=$(this).attr("id");
+            // console.log(activity_id) 
+              
+              if($('.heart').attr("rel") === 'like') 
+              { 
+                $("#likeCount").html(Count+1);
+                  $('.heart').css("background-position","");     
+                  $('.heart').addClass("heartAnimation").attr("rel","unlike");              
+                  flag=1;
+              }
+              else
+              {
+                  $("#likeCount").html(Count-1);
+                  $('.heart').removeClass("heartAnimation").attr("rel","like");
+                  $('.heart').css("background-position","left");    
+                  flag=0;
+              }
+              var Activity_ID;
+              // console.log(aid)
+              // console.log(flag)
+              $.post('updateHeartClick',{flag:flag , aid:aid},(data)=>{
+        
+                    if(data.data==1){
+
+                      setTimeout(()=>{ $('#my-alert-success').modal('open');},500 ); 
+                    }
+                    else if(data.data==0){
+                      setTimeout(()=>{ $('#my-alert-cancel').modal('open');},500 ); 
+                    }
+
+              })
+              
+              }else{
+               window.location.href='{:url("me/Index/login")}';
+              }
+
+        });
+        
+      });
+
+});
+    
+ 
+ function refreshinfo(){
+  $.post('getActivityList',{aid:aid},function(rs){
+    if(rs.success){
+      $('#imgs').attr({"src":'__UPLOAD__/'+rs.data[0].Article_image});
+      $("#clubname").text(rs.data[0].Club_name);
+      $("#activityname").text(rs.data[0].Activity_title);
+      $("#time").text(rs.data[0].Activity_time);
+      $("#address").text(rs.data[0].Activity_location);
+      $("#status").html('<span  class=" am-fr  am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs  '+rs.data[0].statusclass+'"><font color="white">' + rs.data[0].statusstr + '</font></span>');
+      $("#rennumer").text(rs.data[0].Activity_orderedNbr+'人');
+      $("#intro").text(rs.data[0].Activity_intro);
+      // $('.heart').attr({'id':rs.data[0].Activity_ID})
+    }
+    // var Activity_ID=rs.data[0].Activity_ID;
+  });
+
+  $.post('getMyApplyList',{aid:aid},(data)=>{
+    if(data.data==null){
+      $("#sure").attr({'rel':'ok','class':'am-btn am-btn-block  am-round am-btn-warning am-center am-btn-lg'});
+        $("#sure").text("我要报名");
+    }
+    
+    else{
+      if(data.data.flag==1){
+      $("#sure").attr({'rel':'no','class':'am-btn am-btn-block am-btn-default am-round  am-center am-btn-lg'});
+      $("#sure").text("报名成功");
+    }
+    
+      
+    }
+    
+  });
+ }  
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

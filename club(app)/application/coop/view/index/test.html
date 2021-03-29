@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Login Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+<link rel="stylesheet" href="__CSS__/amazeui.min.css">
+
+    <script src="__JS__/jquery.min.js"></script>
+   <script src="__JS__/amazeui.min.js"></script>
+    <style type="text/css">
+
+
+    </style>
+</head>
+
+<body  >
+
+<div class="nav_search am-margin-top-sm">
+    <div class="am-input-group am-input-group-primary">
+          <span class="am-input-group-btn">
+            <button class="am-btn am-btn-primary am-round" type="button"><span class="am-icon-search"></span></button>
+          </span>
+        <input id="nameInput" autofocus="autofocus" type="search" class="am-form-field am-round " placeholder="输入关键字以搜索"/>
+        <span class="am-input-group-btn" id="btnRemove" onclick="javascript:history.back()">
+                  <button id="btnSubmit" class="am-btn am-btn-primary am-round" type="button"><span>取消</span></button>
+          </span>
+    </div>
+</div>
+<ul class="am-list am-list-border" id="list_div">
+
+</ul>
+
+<img id="imgs" src="__IMG__/search.png" class="am-img-responsive" alt=""/>
+
+
+        
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#imgs").hide();
+        $("#nameInput").trigger("click").focus();
+        $("#nameInput").on('keypress',function(e) {
+            var keycode = e.keyCode;
+            var strInput =$(this).val();
+            if(keycode=='13') {
+                e.preventDefault();
+                //请求搜索接口
+                console.log( $(this).val());
+                if($(this).val()!=''){
+                    $.post('findclub',{strInput:strInput},function(rs){
+                        console.log(rs.data.length);
+                        var content = '';
+                        if(rs.data.length>0){
+                            $("#imgs").hide();
+                            $("#list_div").show();
+                            for(var i=0;i<rs.data.length;i++){
+                                content+='<li id="aid'+rs.data[i].Club_id+'" class="am-g get am-margin-right-sm am-margin-left-xs" style="box-shadow:4px 4px 10px  gray; border:2px solid #0ab9f5 ;margin-right: 12px">\n' +
+                                    '    <div class="am-u-sm-4 am-padding-bottom-sm am-padding-top-sm">\n' +
+                                    '        <img src="__UPLOAD__/'+rs.data[i].Image+'" style="width: 100px;height: 100px;">\n' +
+                                    '    </div>\n' +
+                                    '    <div class="am-u-sm-8 am-padding-bottom-sm am-padding-top-sm">\n' +
+                                    '        <span class="am-text-primary am-text-lg">'+rs.data[i].Club_name+'</span><br>\n' +
+                                    '        <span class="am-link-muted ">社长：'+rs.data[i].President+'</span><br>\n' +
+                                    '        <span class="am-text-sm am-link-muted">社团简介：'+rs.data[i].Content+'</span>\n' +
+                                    '    </div>\n' +
+                                    '</li>';
+                            }
+                            $("#list_div").html(content);
+                            $('.get ').on('click',function(){
+                                var aid = $(this).attr("id");
+                                var encodeData = window.btoa(aid);
+                                console.log($(this).attr("id"));
+                                window.location.href='shetuan2.html?aid='+encodeData;
+
+
+                            });
+                        }
+                        else
+                        {
+                            $("#list_div").hide();
+                            $("#imgs").show();
+
+                        }
+
+                    })
+                }
+                else{
+                    //为空处理
+                    // console.log('为空 ');
+                    $("#list_div").hide();
+                    $("#imgs").show();
+                }
+            }
+        });
+
+
+    });
+
+</script>
+
+
+
+
+</body>
+</html>
+

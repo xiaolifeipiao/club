@@ -1,0 +1,181 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>{$title? $title : '未知'}</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+  <link rel="stylesheet" href="__CSS__/app.css">
+</head>
+<body>
+ <header data-am-widget="header"
+          class="am-header am-header-default">
+      <div class="am-header-left am-header-nav">
+          <a href="javascript:history.go(-1);" class="">
+
+              <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%23fff&quot;/&gt;&lt;/svg&gt;" alt=""/>
+          </a>
+
+      </div>
+
+      
+      <div class="am-header-right am-header-nav">
+          <a href="#right-link" class="">
+              <i class="am-header-icon am-icon-home am-icon-sm"></i>
+          </a>
+      </div>
+  </header>
+  <div class="am-article " style="padding: 10px;">
+      <div class="am-article-hd"> 
+        <h1 class="am-article-title">{$data.Article_name}</h3>
+      </div>
+      <div class="am-g am-margin-vertical-{sm}">
+       <div class="am-u-sm-2">
+         <img class="am-circle" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="45" height="45"/>
+       </div>
+       <div class="am-u-sm-6">
+            <p class="" style="margin: 0;font-weight: bold;"><span>{$data.Nickname}</span></p>
+            <p class="am-text-sm am-link-muted"  style="margin: 0;">2018.12.25</p>
+        </div>
+       <div class="am-u-sm-3 am-text-lg"><span class="am-text-primary">关注</span></div>
+      </div>
+      <div class="content">
+         <p>
+          {$data.Content}
+
+         </p>
+   <img class="am-round" style="border-radius:10px;" src="{$data.Photo}" width="100%" />
+      </div>
+  </div>
+  <div data-tab-panel-2 class="am-tab-panel ">
+            <ul class="am-comments-list">
+              <li class="am-comment">
+                  <a href="#link-to-user-home">
+                    <img src="__IMG__/p2.jpg" alt="" class="am-comment-avatar" width="48" height="48"/>
+                  </a>
+
+                  <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                      <div class="am-comment-meta">
+                        <a href="#link-to-user" class="am-comment-author">某人</a>
+                        评论于 <time>2014-7-12 15:30</time>
+                      </div>
+                    </header>
+
+                    <div class="am-comment-bd">
+                            评论内容...
+                    </div>
+                  </div>
+              </li>
+              <hr daCrportaionta-am-widget="divider" style="" class="am-divider am-divider-default" />
+              <li class="am-comment">
+                  <a href="#link-to-user-home">
+                    <img src="__IMG__/p2.jpg" alt="" class="am-comment-avatar" width="48" height="48"/>
+                  </a>
+
+                  <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                      <div class="am-comment-meta">
+                        <a href="#link-to-user" class="am-comment-author">某人</a>
+                        评论于 <time>2014-7-12 15:30</time>
+                      </div>
+                    </header>
+
+                    <div class="am-comment-bd">
+                            评论内容...
+                    </div>
+                  </div>
+              </li>
+              <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+              <li class="am-comment">
+                  <a href="#link-to-user-home">
+                    <img src="__IMG__/p2.jpg" alt="" class="am-comment-avatar" width="48" height="48"/>
+                  </a>
+
+                  <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                      <div class="am-comment-meta">
+                        <a href="#link-to-user" class="am-comment-author">某人</a>
+                        评论于 <time>2014-7-12 15:30</time>
+                      </div>
+                    </header>
+
+                    <div class="am-comment-bd">
+                            评论内容...
+                    </div>
+                  </div>
+              </li>
+              <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+              <li class="am-comment">
+                  <a href="#link-to-user-home">
+                    <img src="__IMG__/p2.jpg" alt="" class="am-comment-avatar" width="48" height="48"/>
+                  </a>
+
+                  <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                      <div class="am-comment-meta">
+                        <a href="#link-to-user" class="am-comment-author">某人</a>
+                        评论于 <time>2014-7-12 15:30</time>
+                      </div>
+                    </header>
+
+                    <div class="am-comment-bd">
+                            评论内容...
+                    </div>
+                  </div>
+              </li>
+              <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+              <!-- ------------ -->
+              <li>
+                  <div style="text-align:center;color:#ccc;";><h3>已经到底了!</h3></div>
+              </li>
+            </ul>
+          </div>
+<!--在这里编写你的代码-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<script src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var paramsString = window.location.search;
+        paramsString  = paramsString.substring(5);
+   // console.log( window.atob(paramsString));
+    var aid = window.atob(paramsString).substring(3);
+    console.log(aid);
+    $.post('',{aid:aid},function(data){
+      
+    })
+
+  })
+</script>
+
+</body>
+</html>

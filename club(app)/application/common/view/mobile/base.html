@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>
+    {block name="titlename"}
+      <!--补充name-->
+
+    {/block}
+</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="__IMG__/logo.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/logo.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/logo.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/logo.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    {block name="header"}
+      <!--补充css-->
+
+    {/block}
+</head>
+<body>
+<!--footer-->
+<div  data-am-widget="navbar" class="am-navbar am-navbar-one" style="border-top: 3px solid white; padding-bottom: 3px; background-color:#fff;">
+    <ul class="am-navbar-nav am-cf am-avg-sm-4 am-padding-horizontal-0">
+        <li>
+            <a href="{:url('index/Index/index')}" class="{$active==1?'one-active':'am-link-muted'}">
+                <img src="__IMG__/home.png">
+                <span class="am-navbar-label">首页</span>
+                <span style="font-size: small; color:red; position: relative; left:20px; top:-42px">&nbsp;</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:url('extra/Index/index')}" class="{$active==2?'one-active':'am-link-muted'}">
+                <img src="__IMG__/order.png">
+                <span class="am-navbar-label">活动</span>
+                <span style="font-size: medium; color:red; position: relative; left:20px; top:-42px">&nbsp;</span>
+            </a>
+        </li>
+<!--        隐藏发需求界面-->
+        <li style="">
+            <a href="{:url('coop/Index/index')}" class="{$active==3?'one-active':'am-link-muted'}">
+                <img src="__IMG__/club.png">
+                <span class="am-navbar-label">社团</span>
+                <span style="font-size: medium; color:red; position: relative; left:20px; top:-42px">&nbsp;</span>
+            </a>
+        </li>
+        <li >
+            <a  href="{:url('me/Index/login')}" class="{$active==4?'one-active':'am-link-muted'}">
+                <img src="__IMG__/me.png">
+                <span class="am-navbar-label">我的</span>
+                <span style="font-size: medium; color:red; position: relative; left:20px; top:-42px">&nbsp;</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+{block name="body"}
+<!--补充body-->
+{/block}
+
+
+
+<!--在这里编写你的代码-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<script src="__JS__/footer.js"></script>
+
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="__JS__/amazeui.ie8polyfill.min.js"></script>
+<script src="__JS__/video-min.js"></script>
+<![endif]-->
+<script src="__JS__/amazeui.min.js"></script>
+
+{block name="footer"}
+<!--补充js-->
+{/block}
+</body></html> 

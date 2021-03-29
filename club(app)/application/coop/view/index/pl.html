@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Login Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+<link rel="stylesheet" href="__CSS__/amazeui.min.css">
+
+    <script src="__JS__/jquery.min.js"></script>
+   <script src="__JS__/amazeui.min.js"></script></script>
+    <style type="text/css">
+
+
+    </style>
+</head>
+
+<body  >
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+   
+      // refreshCoopHudo();//在文档加载后激活函数；
+
+    });
+    function refreshCoopHudo(){
+        $.post('getClubudo',{},function(rs){
+           
+            var content = ''; 
+            
+            if(rs.success){
+                var hd = rs.data;
+                for(var i = 0;i<hd.length;i++){
+                   
+       if (hd[i].Club_id==1) {
+        content+='<div class="am-panel am-panel-default">\<div class="am-u-sm-4">\
+    <div class="am-thumbnail">\
+      <img class="am-radius" alt="140*140" src='+hd[i].Image +
+                        ' width="80%" height="80%" />\
+    </div>\
+  </div>';
+                        content+='<div class="am-panel-bd">\
+                        <dl class="am-margin-bottom-{sm}">\
+                        <dt class="am-text-lg ">'+hd[i].Activity_title+
+                        '<samp class="am-text-xs " style="color:#666; size=1px;">\
+                        '+hd[i].Activity_time+'</samp></dt>\
+<dt class="am-text-xs " style="color:#666">'+hd[i].Activity_location+'</dt><dt></div>';
+            
+                    
+                    content+='</div>';
+                }}
+                $("#huodong_div").html(content);
+            }
+        });    
+    }
+</script>
+
+
+
+
+</body>
+</html>
+

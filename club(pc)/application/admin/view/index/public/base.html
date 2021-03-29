@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>社团管理</title>
+
+    <meta name="description" content="data tables" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="__IMG__/favicon.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="__CSS__/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="__CSS__/font-awesome.min.css" rel="stylesheet" />
+    <link href="__CSS__/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__CSS__/beyond.min.css" rel="stylesheet" />
+    <link href="__CSS__/demo.min.css" rel="stylesheet" />
+    <link href="__CSS__/typicons.min.css" rel="stylesheet" />
+    <link href="__CSS__/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Page Related styles-->
+    <link href="__CSS__/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="__JS__/skins_sub.min.js"></script>
+
+
+ 
+  
+   
+    
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body >
+    {include file="index/public/header"/}
+
+    <!--end menu-->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file="index/public/sider"/}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+           <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    {block name="layer1"}
+                        内容
+                    {/block}
+                    
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Header -->
+                <div class="page-header position-relative">
+                    <div class="header-title" >
+                    {block name="layer2"}
+                        内容
+                    {/block}
+                        
+                    </div>
+                    <!--Header Buttons-->
+                    <div class="header-buttons">
+                        <a class="sidebar-toggler" href="#">
+                            <i class="fa fa-arrows-h"></i>
+                        </a>
+                        <a class="refresh" id="refresh-toggler" href="">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </a>
+                        <a class="fullscreen" id="fullscreen-toggler" href="#">
+                            <i class="glyphicon glyphicon-fullscreen"></i>
+                        </a>
+                    </div>
+                    <!--Header Buttons End-->
+                </div>
+                <!-- /Page Header -->
+                <!-- Page Body -->
+                <div class="page-body"  >
+                    {block name="body"}
+                        内容
+                    {/block}
+                    
+                </div>
+            </div>
+                <!-- /Page Body -->
+        </div>
+            <!-- /Page Content -->
+    </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+</body>
+    <!--Basic Scripts-->
+    <script src="__JS__/jquery-2.0.3.min.js"></script>
+    <script src="__JS__/bootstrap.min.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="__JS__/beyond.min.js"></script>
+
+    <!--Page Related Scripts-->
+    <script src="__JS__/datatable/jquery.dataTables.min.js"></script>
+    <script src="__JS__/datatable/ZeroClipboard.js"></script>
+    <script src="__JS__/datatable/dataTables.tableTools.min.js"></script>
+    <script src="__JS__/datatable/dataTables.bootstrap.min.js"></script>
+    <script src="__JS__/echarts.min.js"></script>
+
+    <!-- <script src="__JS__/datatable/datatables-init-sub.js"></script>-->
+    {block name="js_area"}
+
+    {/block}
+   
+</body>
+<!--  /Body -->
+</html>

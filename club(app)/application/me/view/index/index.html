@@ -1,0 +1,121 @@
+{extend name="../../common/view/mobile/base"/}
+{block name="header"}
+
+{/block}
+{block name="titlename"}
+  我的
+{/block}
+{block name="body"}
+<div style="background-image: url(__IMG__/index1.jpg) ;width:100%;height:100%;background-size:100% 100%;">
+<div class="am-g am-margin-top-0" >
+    <div class="am-u-sm-5">
+        <div class="am-thumbnail am-margin-bottom-0 am-margin-top-sm">
+            <img id="imgs" class="am-radius"  src=""  " style="width:100%;  height:120px;" />
+        </div>
+    </div>
+    <div class="am-u-sm-7  ">
+        <div class="am-margin-top-sm">
+          <span class="am-text-xl " >
+            <span id="username">
+            </span>
+             &nbsp;&nbsp;<font id="tag" color="#666"><span  class="am-icon-slideshare " ></font></span>
+          </span>
+        </div>
+        <a href="Information.html"><button type="button" class="am-btn-default am-btn-warning am-radius am-margin-top-sm am-round " style="
+    margin-top: 25px;
+    margin-left: 30px;
+">申请认证</button></a>
+
+
+    </div>
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+    <ul class="am-avg-sm-4 am-container">
+       <li class="am-u-sm-3">
+            <a href="mychapter.html" class="">
+              <p class="am-text-center am-margin-0"><span class="am-icon-group am-success am-icon-btn"></span></p>
+               <p class="am-text-xs am-text-center am-margin-0 " style="color: white;">我&nbsp;的&nbsp;关&nbsp;注</p>
+            </a>
+        </li>
+        <li class="am-u-sm-3">
+            <a href="mycomments.html" class="">
+                <p class="am-text-center am-margin-0"><span class="am-icon-comments  am-icon-btn am-warning "></span></p>
+                <p class="am-text-xs am-text-center am-margin-0" style="color: white;">我&nbsp;的&nbsp;评&nbsp;论</p>
+            </a>
+        </li>
+        <li class="am-u-sm-3">
+            <a href="mymessage.html" class="">
+               <p class="am-text-center am-margin-0"><span class="am-icon-commenting am-icon-btn am-secondary"></span></p>
+                <p class="am-text-xs am-text-center am-margin-0" style="color: white;">我&nbsp;的&nbsp;消&nbsp;息</p>
+            </a>
+
+        </li>
+        <li class="am-u-sm-3">
+            <a href="myfavorite.html" class="am-center">
+               <p class="am-text-center am-margin-0"><span class="am-icon-th am-icon-btn am-danger "></span></p>
+                <p class="am-text-xs am-text-center am-margin-0" style="color: white;">我&nbsp;的&nbsp;收&nbsp;藏</p>
+            </a>
+        </li>
+
+    </ul>
+
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-bottom-0" />
+</div>
+<p class="am-margin-0" style="background-color: #F0F0F0; width:100%; height:25px;"></p>
+<ul class="am-list am-margin-0">
+    <li><a href="alterperson.html" class="am-margin-left-sm"><font color="#00CED1"><span class="am-icon-yelp am-icon-sm"></span></font>&nbsp;&nbsp;&nbsp;<font color="#000">信息修改<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+    <li id="clear"><a href="alterclub.html" class="am-margin-left-sm"><font color="#66FF66"><span class="am-icon-modx am-icon-sm"></span></font>&nbsp;&nbsp;<font color="#000">社团管理<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+    <li id="clear1"><a href="myrelease.html" class="am-margin-left-sm"><font color="#FFB5C5"><span class="am-icon-paper-plane am-icon-sm"></span></font>&nbsp;&nbsp;<font color="#000">活动发布<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+    <p class="am-margin-0" style="background-color: #F0F0F0; width:100%; height:25px;"></p>
+    
+    
+
+    
+    <li><a href="advice.html" class="am-margin-left-sm"><font color="#FF0033"><span class="am-icon-fire am-icon-sm"></span></font>&nbsp;&nbsp;&nbsp;<font color="#000">意见反馈<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+    <li><a href="guanyu.html" class="am-margin-left-sm"><font color="#008B8B"><span class="am-icon-deviantart am-icon-sm"></span></font>&nbsp;&nbsp;&nbsp;<font color="#000">关于我们<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+    <p class="am-margin-0" style="background-color: #F0F0F0; width:100%; height:25px;"></p>
+
+    <li><a href="systemSettings.html" class="am-margin-left-sm"><font color="#6699FF"><span class="am-icon-cog am-icon-sm"></span></font>&nbsp;&nbsp;&nbsp;<font color="#000">系统设置<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+</ul>
+
+{/block}
+{block name="footer"}
+<script>
+    $(document).ready(function(){
+   
+      refreshUserList();
+      cheak();
+     
+});
+   function cheak(){
+        $.post('cheakUser',{},function(data){
+
+            if(data==true){
+               $("#clear").remove();
+               $("#clear1").remove();
+            }
+        });
+   }
+   function refreshUserList(){
+        $.post('getUserList',{},function(data){
+            var content = '';
+            if(data.success){
+                if(data.data==""){
+                    console.log("为空");
+                    return;
+                }
+                    var userdata = data.data;
+                    $('#username').text(userdata[0].Nickname);
+                    $('#imgs').attr({"src":'__UPLOAD__/'+userdata[0].image});
+                    // console.log('__UPLOAD__/'+userdata[0].image);
+                    if(userdata[0].User_grade==1)
+                    $('#tag').attr({"color":"#FF9900"});
+                  
+                   } 
+                 }).error(function(){
+          $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'异常.png" />')
+        });
+   
+    }
+</script>
+{/block}

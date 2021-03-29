@@ -1,0 +1,225 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>{$title? $title : '未知'}</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+  <link rel="stylesheet" href="__CSS__/app.css">
+</head>
+<body>
+ <header data-am-widget="header"
+          class="am-header am-header-default">
+      <div class="am-header-left am-header-nav">
+          <a href="javascript:history.go(-1);" class="">
+
+              <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%23fff&quot;/&gt;&lt;/svg&gt;" alt=""/>
+          </a>
+
+      </div>
+
+      
+      <div class="am-header-right am-header-nav">
+          <a href="#right-link" class="">
+              <i class="am-header-icon am-icon-home am-icon-sm"></i>
+          </a>
+      </div>
+  </header>
+  <div class="am-article " style="padding: 10px;">
+      <div class="am-article-hd"> 
+        <h1 class="am-article-title am-padding-top-sm" id="title"></h3>
+      </div>
+      <div class="am-g am-margin-vertical-{sm}">
+       <div class="am-u-sm-2">
+         <img class="am-circle" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="45" height="45" id="image"/>
+       </div>
+       <div class="am-u-sm-6">
+           <p class="am-center" style="margin: 0;font-weight: bold;"><span id="myadmin" class="am-center"></span></p>
+            <p class="am-text-sm am-link-muted"  style="margin: 0;"><span id="time"></span></p>
+        </div>
+        <div class="am-u-sm-4"></div>
+      </div>
+      <hr/>
+      <div class="content am-padding-top-sm">
+         <p id="text" style="padding: 0px 5px;white-space: pre-line;text-indent: 2em"></p>
+   <img id="imgs" class="am-round" style="border-radius:10px;" src="#" width="100%" />
+      </div>
+  </div>
+  <div data-tab-panel-2 class="am-tab-panel ">
+            <ul class="am-comments-list" id="pinglun">
+              <li class="am-comment">
+                  <a href="#link-to-user-home">
+                    <img src="__IMG__/p2.jpg" alt="" class="am-comment-avatar" width="48" height="48"/>
+                  </a>
+                  <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                      <div class="am-comment-meta">
+                        <a href="#link-to-user" class="am-comment-author">某人</a>
+                        评论于 <time>2014-7-12 15:30</time>
+                      </div>
+                    </header>
+
+                    <div class="am-comment-bd">
+                            评论内容...
+                    </div>
+                  </div>
+              </li>
+              <hr daCrportaionta-am-widget="divider" style="" class="am-divider am-divider-default" />
+              <!-- ------------ -->
+            </ul>
+                  <from class="am-form" method="post">
+                      <div class="am-g am-padding-bottom-sm">
+                          <span class=" am-padding-left-xl am-u-sm-9">
+                              <input type="text" class="am-form-field am-round Discuss_Content" placeholder="：写评论" />
+                          </span>
+                          <span class="am-u-sm-3">
+                              <button id="sure" data-am-modal=""  type="button" rel="ok" class="am-btn am-btn-success am-round ">发表</button>
+                          </span>
+                      </div>
+                  </from>
+
+      <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+          <div class="am-modal-dialog">
+              <div class="am-modal-hd"></div>
+              <div class="am-modal-bd">
+                  发布成功！
+              </div>
+              <div class="am-modal-footer">
+                  <span class="am-modal-btn">确定</span>
+              </div>
+          </div>
+      </div>
+          </div>
+<!--在这里编写你的代码-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="__JS__/amazeui.min.js"></script>
+ <script type="text/javascript">
+     $(document).ready(function(){
+         var times
+         var paramsString = window.location.search;
+         paramsString  = paramsString.substring(5);
+         var aid = window.atob(paramsString).substring(3);
+         $.post("getarticles",{aid:aid},function(rs){
+             if(rs.success){
+                 $("#title").text(rs.data[0].Article_name);
+                 $("#text").text(rs.data[0].Content);
+                 $("#myadmin").text(rs.data[0].Nickname);
+                 times=rs.data[0].Update_time;
+                 times=times.substring(0,10);
+                 $('#time').text(times);
+                 $("#image").attr({"src":'__UPLOAD__/'+rs.data[0].image})
+
+                 for(var i=0;i<rs.data.length;i++){
+                     var str=rs.data[i].Photo;
+                     var strs= new Array();
+                     str=str.substring(0,str.length-1);
+                     strs=str.split(";");
+                     $('#imgs').attr({"src":'__IMG__/'+strs[i]});
+                 }
+             }
+         });
+         discuss();
+                function discuss(){
+             $.post('getUserpl', {aid:aid}, function (rs) {
+                 var content = '';
+                 if (rs.success) {
+                     var pl = rs.data;
+                     var time;
+                     for (var i = 0; i < pl.length; i++) {
+                         console.log(pl[i]);
+                         time = pl[i].Discuss_time.substring(5, 10);
+                         content += '<li class="am-comment am-padding-left-sm am-padding-right-sm">\n' +
+                             '                             <a href="#">\n' +
+                             '                             <img src="'+'__UPLOAD__/' + pl[i].image + '" alt="" class="am-comment-avatar" width="48" height="48"/>\n' +
+                             '                             </a>\n' +
+                             '                             <div class="am-comment-main">\n' +
+                             '                             <header class="am-comment-hd">\n' +
+                             '                             <div class="am-comment-meta">\n' +
+                             '                             <a href="#link-to-user" class="am-comment-author">' + pl[i].Nickname + '</a>\n' +
+                             '                         评论于 <time class="am-padding-left-lg">' + time + '</time>\n' +
+                             '                         </div>\n' +
+                             '                         </header>\n' +
+                             '                         <div class="am-comment-bd">\n' +
+                             '                             ' + pl[i].Discuss_Content + '\n' +
+                             '                     </div>\n' +
+                             '                         </div>\n' +
+                             '                         </li>'
+                     }
+                     $("#pinglun").html(content);
+                 }
+
+             });}
+
+             $('#sure').on("click", function () {
+                 var Discuss_Content = $(".Discuss_Content").val();
+                 var from = new FormData();
+                 from.append("Discuss_Content", Discuss_Content);
+                 from.append("aid",aid);
+                 var flag = true;
+                 if (Discuss_Content == "") {
+                     flag = false;
+                 }
+                 else {
+                     flag = true;
+                 }
+                 if (flag) {
+                     $.ajax({
+                         type: 'post',
+                         url: "getdiscuss",
+                         data: from,
+                         dataType: 'json',
+                         contentType: false,
+                         processData: false,
+                         success: function (e) {
+                             console.log(e.data)
+                             if (e.data == 1) {
+                                 $('#my-alert-success').modal('open');
+                                 var Discuss_Content = $(".Discuss_Content").val("");
+                             }
+                             discuss();
+                         }
+                     });
+                 }
+             });
+
+
+     });
+
+  </script>
+</body>
+</html>

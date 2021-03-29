@@ -1,0 +1,297 @@
+
+{extend name="../../common/view/mobile/base"/}
+{block name="titlename"}
+  首页
+{/block}
+{block name="header"}
+<style type="text/css">
+     h2 {
+    margin: 0 0 0.5em 0;
+   }
+
+[data-am-widget=tabs] {
+    margin: 0px;
+}
+
+</style>
+   
+{/block}
+{block name="body"}
+
+<div data-am-widget="slider" class="am-slider am-slider-b2" data-am-slider='{"controlNav":false}' >
+    <ul class="am-slides">
+        <li>
+            <img src="__IMG__/photo2.png" width="375px" height="200px">
+
+        </li>
+        <li>
+            <img src="__IMG__/纳新.jpg"  width="375px" height="200px">
+
+        </li>
+        <li>
+            <img src="__IMG__/photo4.jpg"  width="375px" height="200px">
+
+        </li>
+     
+    </ul>
+</div>
+
+</div>
+<div class="">
+    <!--<p class="am-cf am-margin-bottom-xs am-margin-right-sm am-margin-top-xs"><a href="#" class="am-fr am-text-lg">更&nbsp;多<span class="am-next"></span></a></p>-->
+    <div class="am-g am-margin-top-sm" >
+        <a class="am-u-sm-3" href="{:url('../../coop/Index/index')}">
+
+           <img src="__IMG__/文学.png" width="60px" height="60px" class="am-radius">
+            <p style="color: #666;" class="am-text-sm am-margin-bottom-xs am-margin-top-xs am-padding-left-sm">文学</p>
+
+       </a>
+        <a class="am-u-sm-3" href="{:url('../../coop/index/index')}">
+
+                <img src="__IMG__/体育.png" width="60px" height="60px" class="am-radius">
+                <p style="color: #666;" class="am-text-sm am-margin-bottom-xs am-margin-top-xs am-padding-left-sm">体育</p>
+
+        </a>
+        <a class="am-u-sm-3" href="{:url('../../coop/index/index')}">
+
+              <img src="__IMG__/公益.png" width="60px" height="60px" class="am-radius">
+               <p style="color: #666;" class="am-text-sm am-margin-bottom-xs am-margin-top-xs am-padding-left-sm" >公益</p>
+
+        </a>
+        <a class="am-u-sm-3" href="{:url('../../coop/index/index')}">
+
+                <img src="__IMG__/音乐.png" width="60px" height="60px" class="am-radius">
+                <p style="color: #666;" class="am-text-sm am-margin-bottom-xs am-margin-top-xs am-padding-left-sm">音乐</p>
+
+        </a>
+    </div>
+</div>
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2">
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active"><a href="[data-tab-panel-0]" id="refreshTab0"  onclick="refreshTab0()">活动</a></li>
+        <li class=""><a href="[data-tab-panel-1]" id="refreshTab1" onclick="refreshTab1()">文章</a></li>
+        
+        <li class=""><a href="[data-tab-panel-2]" id="refreshTab2"  onclick="refreshTab2()">话题</a></li>
+    </ul>
+    <div class="am-tabs-bd" style="border-bottom:none; border-right: none; border-left: none; ">
+        
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+            <ul class="am-list am-list-border" style="
+    background-color: #f8f8f8;
+" id="list_div0"></ul>
+         </div>
+         <div data-tab-panel-1 class="am-tab-panel ">
+            <ul class="am-list" id="panel-1"></ul>
+         </div>
+        <div data-tab-panel-2 class="am-tab-panel ">
+            <ul class="am-list" id="panel-2">
+
+                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">
+                    <div class="am-g ">
+                        <div class=" am-u-sm-11 am-list-main">
+                            <h3 class="am-list-item-hd ">
+                                <a href="" class="">电子校清明踏青</a></h3>
+                        </div>
+                    </div>
+                    <div class="am-g am-link-muted  ">
+                        <div class="am-u-sm-3 am-align-left am-vertical-align-middle am-list-item-text">
+                            <span class="am-margin-right-sm">摄影</span></div>
+                        <div class="am-u-sm-4"><span class="am-icon-commenting-o  am-padding-right-lg"><small class="am-padding-left-sm">99</small></span></div>
+                    </div>
+                </li>
+                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">
+                    <div class="am-g ">
+                        <div class=" am-u-sm-11 am-list-main">
+                            <h3 class="am-list-item-hd ">
+                                <a href="" class="">歌乐山登高</a></h3>
+                        </div>
+                    </div>
+                    <div class="am-g am-link-muted  ">
+                        <div class="am-u-sm-3 am-align-left am-vertical-align-middle am-list-item-text">
+                            <span class="am-margin-right-sm">户外</span></div>
+                        <div class="am-u-sm-4"><span class="am-icon-commenting-o  am-padding-right-lg"><small class="am-padding-left-sm">39</small></span></div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+{/block}
+{block name="footer"}
+<script src="__JS__/video.min.js"></script>
+<script>
+        flag=true;
+       tabid = 1;
+$(document).ready(function(){
+    if(flag){
+        btnFlag=$("#btnRemove").detach();
+        flag=false;
+     }
+     btnList();
+});
+    function btnList(){
+        $("input").focus(function(){
+          if($("#btnRemove").length == 0){
+             $("<span class=\"am-input-group-btn\" id=\"btnRemove\"><button id=\"btnSubmit\" class=\"am-btn am-btn-primary am-round\" type=\"button\"><span>搜索</span></button></span>").insertAfter("#nameInput");
+           }
+             //按钮提交
+             $("#btnSubmit").click(function(){
+             select=$("#nameInput").val();
+
+                  if (tabid==0){
+                    refreshTab0();
+                  }
+                  else if (tabid==1){
+                    refreshTab1();
+                  }
+                  else if(tabid==2){
+                    refreshTab2();
+                  }
+
+
+                  $("#btnRemove").detach();
+             });
+        });
+    }
+    //文章
+   $(document).ready(function () {
+      
+      $("#refreshTab0").click(refreshTab0());
+       
+          }) ;
+
+   function refreshTab2(){
+
+
+   $.post('{:url("index/Index/getlist")}',{},function(data){
+            var content = '';
+            if(data.success){
+                var data = data.data;
+                 for(var i = 0;i<data.length;i++) {
+                     content += '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">\n' +
+                         '   <div class="am-g ">\n' +
+                         '   <div class=" am-u-sm-11 am-list-main">\n' +'<h2 class="am-list-item-hd ">\n' +
+                         '<a href="" class=""><font color="#333">' + data[i].Article_name + '</font></a></h2>\n' +
+                         '                        </div>\n' +
+                         '                    </div>\n' +
+                         '                    <div class="am-g am-link-muted  ">\n' +
+                         '                        <div class="am-u-sm-3 am-align-left am-vertical-align-middle am-list-item-text">\n' +
+                         '                            <span class="am-margin-right-sm"><font color="#333">' + data[i].Club_name + '</font></span></div>\n' +
+                         '                        <div class="am-u-sm-4"><span class="am-icon-commenting-o  am-padding-right-lg"><small class="am-padding-left-sm">39</small></span></div>\n' +
+                         '                    </div>\n' +
+                         '                </li>';
+                 }
+
+     $("#panel-2").html(content);
+      tabid = 4;
+}
+  });
+}               
+
+   function refreshTab0(){
+ 
+     var select=$("#nameInput").val();
+   $.post("{:url('index/Index/getActiviTytypeList')}",{},function(data){
+                var jsonarry=eval(data.data);
+                console.log(jsonarry);
+                var content = '';
+                 for(var i = 0;i<jsonarry.length;i++) {
+                     time = jsonarry[i].Activity_time.substring(0, 5);
+                     console.log(jsonarry[i].Activity_image);
+                     content += '<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong style="font-size:larger;color:#333"><font>' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                 }
+     $("#list_div0").html(content);
+        tabid =3;
+       $('.get ').on('click',function(){
+           var aid = $(this).attr("id");
+           var encodeData = window.btoa(aid);
+           //console.log($(this).attr("id"));
+           window.location.href='{:url("extra/Index/activity")}?aid='+encodeData;
+       });
+
+   });
+}
+   function refreshTab1(){
+
+     var select=$("#nameInput").val();
+   $.post("{:url('index/Index/getHomeList')}",{"strl":select},function(data){
+          // var rsdata = eval('('+rs+')');
+            var content = '';
+            var id;
+            if(data.success){
+                var data = data.data;
+                 for(var i = 0;i<data.length;i++){
+
+                     var str=data[i].Photo;
+                     var strs= new Array();
+                     if(str!=null){
+                         str=str.substring(0,str.length-1);
+                         strs=str.split(";");
+
+                         console.log(strs.length);
+                         if(strs.length<2){
+                             content += '<li id="aid' + data[i].Article_id + '" class="get am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">\
+                <div class="am-g ">\
+                    <div class=" am-u-sm-8 am-list-main">\
+                        <h2 class="am-list-item-hd " >\
+                            <a href="#" class=""><font color="#333">' + data[i].Article_name + ' </font></a></h2>\
+                    </div>\
+                    <div class="am-u-sm-4 am-list-thumb ">\
+                            <a href="index/Index/article/id/' + data[i].Article_id + '" class="" onclick="add()"><img src="__IMG__/' + strs[0]+ '" alt="" class="am-img-responsive" style="width: 120px;height: 80px;" /></a>\
+                    </div>\
+                </div>\
+                    <div class="am-g am-link-muted  ">\
+                        <div class="am-u-sm-12 am-align-left am-vertical-align-middle am-list-item-text am-text-sm"><span><font color="#333">' + data[i].Nickname +'&nbsp;&nbsp;&nbsp;&nbsp;'+(data[i].cnt?data[i].cnt:0)+'评论&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].timestr+'</font></span></div>\
+                    </div>\
+                </li>';
+                         }else
+                         {    content+='<li id="aid' + data[i].Article_id + '" class="get am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-left " >\
+                    <h2 class="am-list-item-hd">\
+                        <a href="#" class="am-text-center"><font color="#333">'+data[i].Article_name+'</font></a>\
+                    </h2>\
+                    <div class=" am-u-sm-12  am-list-main am-list-item-text"  >\
+                        <ul class="am-avg-sm-3 am-thumbnails">';
+                        for (var j = 0; j < strs.length; j++) {
+                            content+='<li><img class="am-thumbnail am-margin-bottom-0" style="height: 80px;"src="__IMG__/'+strs[j]+'" /></li>';
+                        }
+                           
+                        content+='</ul>\
+                    </div>\
+                    <div class="am-g am-link-muted  ">\
+                        <div class="am-u-sm-12 am-align-left"><span><small><font color="#666">'+data[i].Nickname+'&nbsp;&nbsp;&nbsp;&nbsp;'+(data[i].cnt?data[i].cnt:0)+'评论&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].timestr+'</font></small></span></div>\
+                    </div>\
+                </li>';
+                         }
+                     }
+
+ }
+     $("#panel-1").html(content);
+          tabid = 1;
+                $('.get').on('click',function(){
+                    var aid = $(this).attr("id");
+                    var encodeData = window.btoa(aid);
+                    window.location.href='{:url("index/Index/articles")}?aid='+encodeData;
+                });
+}
+  });
+}
+
+</script>
+
+{/block}
+
+

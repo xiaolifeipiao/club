@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+</head>
+<body style="background-color: #F0F0F0;">
+<ul class="am-avg-sm-3 am-thumbnails am-margin-bottom-xs am-text-primary " style="margin:0px; background: #01AAED; color: white;">
+  <li><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" onclick="javascript:history.back()"></span></li>
+  <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;爱好</span></li>
+  <li ><span id="user_live"  data-am-modal="" class=" am-margin-top-xs am-fr am-text-lg am-padding-right-xs">&nbsp;&nbsp;保存</span></li>
+  
+</ul>
+<div class="am-form-success" style="background: white;">
+  <input id="live_text" class="am-form-field" type="text" name="" placeholder="请输入你的爱好" style="border:0px;">
+</div>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-null">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      保存爱好失败,不能为空哦！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-failure">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      保存爱好失败！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+ <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      保存成功！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#user_live').on('click',function(){
+    var user_live=$("#live_text").val();
+    if(user_live==""){
+            $('#my-alert-null').modal('open');
+         }
+    else{
+          $.post('updateUserLive',{'user_live':user_live},function(data){
+                  if(data.success){ 
+                      $('#my-alert-success').modal('open');
+                  }else{
+                    $('#my-alert-failure').modal('open');
+                    }
+                });
+            }
+  });
+      
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

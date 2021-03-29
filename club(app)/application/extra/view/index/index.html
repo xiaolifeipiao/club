@@ -1,0 +1,314 @@
+{extend name="../../common/view/mobile/base"/}
+{block name="header"}
+<style type="text/css">
+.nav{
+    position: relative;
+}
+.nav_search{
+    position: absolute;
+    bottom:30px;
+}
+img{
+    width: 100%;
+    height:100%;
+    display: block;
+}
+
+
+</style>
+{/block}
+{block name="titlename"}
+  活动
+{/block}
+{block name="body"}
+<div class="nav">
+    <img src="__IMG__/活动.jpg" class="am-img-responsive" alt="" height="100px" />
+    <div class="nav_search">
+         <div class="am-input-group am-input-group-primary">
+          <span class="am-input-group-btn">
+            <button class="am-btn am-btn-primary am-round" type="button"><span class="am-icon-search"></span></button>
+          </span>
+          <input id="nameInput" type="text" class="am-form-field am-round " placeholder="搜索"/>
+          <span class="am-input-group-btn" id="btn">
+                <button id="btnSubmit" class="am-btn am-btn-primary am-round" type="button"> 搜索</button>
+          </span>
+        </div> 
+    </div>
+</div>
+
+<div id="content1" data-am-widget="tabs"
+     class="am-tabs am-tabs-d2 am-margin-0"
+>
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active"><a href="[data-tab-panel-0]">全部</a></li>
+        <li class=""><a href="[data-tab-panel-1]">学术</a></li>
+        <li class=""><a href="[data-tab-panel-2]">文娱</a></li>
+        <li class=""><a href="[data-tab-panel-3]">体育</a></li>
+        
+        <li class=""><a href="[data-tab-panel-4]">公益</a></li>
+       
+        <li class=""><a href="[data-tab-panel-5]">其他</a></li>
+    </ul>
+    <div id="content2" class="am-tabs-bd " >
+      <div id="content3" data-tab-panel-0 class="am-tab-panel am-active">
+            <ul  class="am-list am-list-border" id="list_div0">
+               
+           </ul>
+
+      </div>
+      <div data-tab-panel-1 class="am-tab-panel ">
+           <ul class="am-list am-list-border" id="list_div1">
+              
+              <li class="am-margin-top-sm">
+                <a href="#" class="am-padding-0">
+                    <div class="am-g am-text-primary">
+                       <div class="am-u-sm-3 am-padding-0">
+        
+                          <img  class="am-radius am-img-thumbnail am-padding-0" style="border:0px;" alt="140*140" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555733042&di=df72647a02ffca02f2171a317572e2c8&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01f94255e0204432f875a1329c8afe.jpg%401280w_1l_2o_100sh.jpg" width="80px" height="80px" />
+        
+                        </div>
+                        <div class="am-u-sm-9">
+                              <div class="am-margin-top-0">
+                                       <div class=" am-text-truncate am-padding-0" style="width: 200px;">活动名的介绍ashcvan anaskmv JKJK  kads</div>
+                                       
+                                       <span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;11月30日</span></br>
+                                       <span class="am-text-sm"><span class="am-icon-send"></span>&nbsp;吉他社</span>
+                                       
+                                       <span class="am-fr am-padding-left-xs
+                                        am-padding-right-xs am-btn-success">学术</span>
+         
+                                       </div>
+                                </div>
+                        </div>
+                </a>
+              </li>
+              
+              
+              
+           </ul>
+      </div>
+       <div data-tab-panel-2 class="am-tab-panel am-active">
+            <ul class="am-list am-list-border" id="list_div2">
+               
+           </ul>
+
+      </div>
+       <div data-tab-panel-3 class="am-tab-panel am-active">
+            <ul class="am-list am-list-border" id="list_div3">
+               
+           </ul>
+
+      </div>
+       <div data-tab-panel-4 class="am-tab-panel am-active">
+            <ul class="am-list am-list-border" id="list_div4">
+               
+           </ul>
+
+      </div>
+       <div  data-tab-panel-5 class="am-tab-panel am-active">
+            <ul class="am-list am-list-border" id="list_div5">
+               
+           </ul>
+
+      </div>
+        
+</div>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-failure">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      你还没得创建社团哦！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-login">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      你还没得登录哦！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+{/block}
+{block name="footer"}
+<script>
+    $(document).ready(function(){
+      $('#btn').on("click",function(){
+        $.post("getUserId",{},function(e){
+          if(e!=""){
+            $.post('cheakUserClub',{},function(e){
+              if(e.data!=0){
+                  window.location.href='publish.html';
+                }
+              else{
+                  $('#my-alert-failure').modal('open');
+              }
+            })
+          }
+          else
+          {
+            $('#my-alert-login').modal('open');
+          }
+        })
+        
+        
+      })
+      reActiviTytypeListAll();
+      reActiviType();
+      btnList();
+      
+});
+     function btnList(){
+        $("#nameInput").focus(function(){
+            window.location.href="search.html";
+        });
+        $("#btnSubmit").on('click',function(){
+          window.location.href="search.html";
+        }) 
+    }
+    function reActiviType(){
+        $.post("{:url('index/Index/getActiviTytypeList')}",{},function(data){
+            var  content1='';
+            var  content2='';
+            var  content3='';
+            var  content4='';
+            var  content5='';
+            var time;
+            var jsonarry=eval(data.data);
+            for(var i=0; i<jsonarry.length;i++){
+                 
+                time=jsonarry[i].Activity_time.substring(0,5);
+                
+                if(jsonarry[i].Category_id==2){
+                    // console.log(jsonarry[i].Category_title);
+                    content1+='<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong style="font-size:larger;color:#333"><font>' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                }
+                else if(jsonarry[i].Category_id==1){
+                    content2+='<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong style="font-size:larger;color:#333"><font>' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                }
+                else if(jsonarry[i].Category_id==3){
+                    content3+='<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong style="font-size:larger;color:#333"><font>' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                }
+                else if(jsonarry[i].Category_id==4){
+                    content4+='<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong style="font-size:larger;color:#333"><font>' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                }
+                else if(jsonarry[i].Category_id==5){
+                    content5+='<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong style="font-size:larger;color:#333"><font>' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                }
+
+            }
+             $("#list_div1").html(content1); 
+             $("#list_div2").html(content2);
+             $("#list_div3").html(content3);
+             $("#list_div4").html(content4);
+             $("#list_div5").html(content5);
+             $('.get ').on('click',function(){ 
+                var aid = $(this).attr("id");
+                var encodeData = window.btoa(aid);
+                window.location.href='activity.html?aid='+encodeData;
+        });            
+        });
+    }
+   function reActiviTytypeListAll(){
+        $.post("{:url('index/Index/getActiviTytypeList')}",{},function(data){
+                var jsonarry=eval(data.data);
+                // console.log(jsonarry);
+                var content = '';
+                 for(var i = 0;i<jsonarry.length;i++) {
+                     time = jsonarry[i].Activity_time.substring(0, 5);
+                     // console.log(jsonarry[i].Activity_image);
+                     content += '<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong style="font-size:larger;color:#333"><font>' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                 }
+            $("#list_div0").html(content);
+             $('.get ').on('click',function(){ 
+                var aid = $(this).attr("id");
+                var encodeData = window.btoa(aid);
+             console.log($(this).attr("id"));  
+                window.location.href='activity.html?aid='+encodeData;
+              }); 
+
+        }); 
+                 
+        }
+   
+    
+</script>
+{/block}

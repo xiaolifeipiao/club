@@ -1,0 +1,161 @@
+
+
+   <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+     <title>个人资料</title>
+    <script type="text/javascript" src="js/vue.js" ></script>
+      <script type="text/javascript" src="js/vant.js" ></script>
+      <link rel="stylesheet" href="css/vant.css" />
+     <link rel="stylesheet" href="css/chapter6.css" />
+      <link rel="stylesheet" href="css/iconfont.css" />
+      <script type="text/javascript" src="js/lazyload.js" ></script>
+      <script type="text/javascript" src="js/ajax.js" ></script>
+      <style>
+          body{
+              background-color: #E8E8E8;
+          }
+          .navBarStyle{
+              padding-top: 20px;
+              background-color: red;
+              color: white;
+              text-align: center;
+          }
+          .col-main{
+              margin-top: 3%;
+          }
+          .col-footer{
+              margin-top: 3%;
+          }
+      </style>
+  </head>
+  <body>
+      <div id="personal">
+          <!--使用van-row和van-col两个组件来进行 行列布局-->
+          <van-row>
+              <!--span设置列所占的宽度百分比-->
+              <van-col span="24">
+                  <!--NavBar导航栏  title标题       left-arrow左侧箭头   @click-left点击左侧按钮时触发-->
+                  <van-nav-bar class="navBarStyle"
+                     title="个人资料"
+                      left-arrow
+                      @click-left="onClickLeft"
+                  />
+              </van-col>
+              <van-col span="24" class="col-main">
+                 <!--Cell单元格    value右侧内容    is-link是否展示右侧箭头 -->
+                 <van-cell-group>
+                     <van-cell  value="更换头像" is-link @click="clickRight">
+                          <template slot="title" >
+                              <img  style="width:40% ;border-radius: 50%;" :src="avatarImage"  onerror="javascript:this.src='img/default_avatar.jpg'"/>
+                          </template>
+                     </van-cell>
+             </van-col>    
+             <van-col span="24" class="col-footer">
+                 <van-cell-group>
+                     <van-cell title="昵称" is-link :value="NickName" @click="updateNickName()"></van-cell>
+                      <van-cell title="手机号码" is-link :value="Phone"  @click="updatePhone()"></van-cell>
+             </van-col>    
+          </van-row>
+          <!-- van-actionsheet上拉菜单 -->
+          
+              <div>
+                  <p onclick="getHeadPortrait('camera')">照相</p>
+                  <p onclick="getHeadPortrait('Album')">从相册中选择</p>
+              </div>
+              
+          </van-actionsheet>
+      </div>
+      <script type="application/javascript">
+          getHeadPortrait(ways){
+                     if(ways=="camera"){
+                           var cmr = plus.camera.getCamera();
+                         cmr.captureImage(function (p){ //拍照操作成功的回调函数，p拍照操作保存的文件路径
+                             plus.io.resolveLocalFileSystemURL(p, function(entry){ 
+                                 var imgUrl = entry.toLocalURL();//获取目录路径转换为本地路径URL地址
+                                 personalVue.$dialog.confirm({
+                                     title: '上传提示',
+                                     message: '您确定要上传该图片作为头像吗?'
+                                 }).then( function() {//确认上传
+                                     var toast = personalVue.$toast.loading({
+                                         duration: 0,
+                                         forbidClick: true,//禁用背景点击
+                                         message: '正在上传'
+                                     }); 
+                                       //plus.uploader.createUpload创建上传任务，创建成功返回Upload对象，用于管理上传任务
+                                       var task = plus.uploader.createUpload( "http://dsapi.ysd3g.com/api/uploadavatarimage?key="+personalVue.userKey+"", 
+                                         { method:"POST",blocksize:204800,priority:100 },
+                                         function ( t, status ) {
+                                             //t为上传任务对象  status为上传结果状态码
+                                             if(status == 200){//上传成功
+                                                 var responseText = JSON.parse(task.responseText);//获得上传任务完成后服务器返回的数据
+                                                 plus.storage.setItem("AvatarImage",responseText.AvatarImage);
+                                                 //responseText.AvatarImage获得头像路径，重新赋值存储
+                                                 toast = personalVue.$toast.success("上传成功");
+                                                 personalVue.$toast.clear();
+                                                 plus.webview.currentWebview().reload(false);//使用缓存，加快读取速度
+                                             }else{
+                                                 personalVue.$toast.fail("上传失败："+status);
+                                                 personalVue.$toast.clear();
+                                                plus.webview.currentWebview().reload(false);
+                                             }
+                                         }
+                                     );
+                                     task.addFile(imgUrl, {key:"imgUrl"});
+                                     //addFile添加上传文件，imgUrl上传文件的路径，仅支持本地文件路径，key上传文件在上传任务中的键名
+                                     task.start();
+                                    personalVue.isShow = false;
+                                }).catch(function() {
+                                     personalVue.$toast("取消上传");
+                                 });
+                             });  
+                         }, function(e){//摄像头操作失败的回调函数
+                             personalVue.$toast.fail(e.message);
+                         },{index:1,filename:"_doc/camera/"});
+                     } else if (ways=="Album"){
+                           plus.gallery.pick( function(path){//从相册中选择图片
+                            personalVue.$dialog.confirm({
+                                 title: '上传提示',
+                                 message: '您确定要上传该图片作为头像吗?'
+                             }).then(function(){
+                                var toast = personalVue.$toast.loading({
+                                  duration: 0,
+                                  forbidClick: true,
+                                   message: '正在上传'
+                                });
+                                  var task = plus.uploader.createUpload( "http://dsapi.ysd3g.com/api/uploadavatarimage?key="+personalVue.userKey+"", 
+                                     { method:"POST",blocksize:204800,priority:100 },
+                                     function ( t, status ) {
+                                         if(status == 200){
+                                            var responseText = JSON.parse(task.responseText);
+                                             plus.storage.setItem("AvatarImage",responseText.AvatarImage);
+                                             toast = personalVue.$toast.success("上传成功");
+                                            personalVue.$toast.clear();
+                                            plus.webview.getWebviewById("personal").reload();
+                                            plus.webview.currentWebview().reload();
+                                         }else{
+                                            personalVue.$toast.fail("上传失败："+status);
+                                             personalVue.$toast.clear();
+                                             plus.webview.currentWebview().reload(false);
+                                        }
+                                    }
+                                );
+                                task.addFile(path, {key:"imgUrl"});
+                               task.start();
+                               personalVue.isShow = false;
+                            }).catch(function() {
+                                 personalVue.$toast("取消上传");
+                            });
+                        }, function (e) {//选择图片错误回调
+                             personalVue.$toast.fail(e.message);
+                         }, {filter:"image"} );//相册中选择文件类型过滤器
+                     }else{
+                           this.$toast.fail("选择了错误的选项!");
+                     }
+                 }
+     </script>
+ </body>
+ </html>
+

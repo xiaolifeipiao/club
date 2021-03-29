@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Login Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+<link rel="stylesheet" href="__CSS__/amazeui.min.css">
+
+    <script src="__JS__/jquery.min.js"></script>
+   <script src="__JS__/amazeui.min.js"></script>
+    <script src="__JS__/unslider.min.js" tppabs="http://www.jq22.com/demo/unslider-150203225543/unslider.min.js"></script>
+    <style>
+        #lunbobox {
+            width:500px;
+            height:300px;
+            position:relative;
+            padding-left: 0px;
+            margin-right: 5px;
+            left: 0px;
+        }
+        .lunbo {
+            width:500px;
+            height:300px;
+            padding-left: 0px;
+            margin-right: 5px;
+        }
+        .lunbo img {
+            width:500px;
+            height:300px;
+            position:absolute;
+            top:0px;
+            left:0px;
+        }
+        #lunbobox ul {
+            width:285px;
+            position:absolute;
+            bottom:10px;
+            right:10px;
+            z-index:5;
+        }
+        #lunbobox ul li {
+            cursor:pointer;
+            width:10px;
+            height:4px;
+            border:1px solid #cccccc;
+            float:left;
+            list-style:none;
+            background:#cccccc;
+            text-align:center;
+            margin:5px;
+        }
+        #toleft {
+            display:none;
+            width:30px;
+            height:100px;
+            font-size:40px;
+            line-height:100px;
+            text-align:center;
+            color:#f4f4f4;
+            position:absolute;
+            top:90px;
+            left:12px;
+            cursor:pointer;
+            z-index:99;
+            opacity:0.4;
+        }
+        #toright {
+            display:none;
+            width:30px;
+            height:100px;
+            font-size:40px;
+            line-height:100px;
+            text-align:center;
+            color:#f4f4f4;
+            position:absolute;
+            top:90px;
+            right:0px;
+            cursor:pointer;
+            z-index:99;
+            opacity:0.4;
+    </style>
+    <style type="text/css">
+    .am-thumbnail {
+    display: block;
+    padding: 2px;
+    margin-bottom: 2rem;
+    background-color: #fff;
+     border: 0; 
+    border-radius: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+</style>
+</head>
+
+<body  >
+<div class="body">
+<ul class="am-nav">
+  <li class="am-active" onclick="javascript:history.back()">
+      <a href="#" ><span class="am-icon-chevron-left  am-icon-angle-left am-icon-md "></span></a>
+
+</ul>
+<div class="am-g" style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548410776&di=f0f0bcac87cd25e85a85e220f975a87b&imgtype=jpg&er=1&src=http%3A%2F%2Fpic28.photophoto.cn%2F20130911%2F0008020994197203_b.jpg);">
+    <div class="am-u-sm-4">
+        <div class="am-thumbnail am-margin-top-sm">
+            <img style="height: 100px; width: 100px;" class="am-radius"id="imgs" alt="140*140" src= "__IMG__/p2.jpg" width="100%" height="100%" style="height: 100%;width: 100%" />
+        </div>
+    </div>
+    <div class="am-u-sm-6">
+
+        <dl class="am-margin-bottom-{sm}">
+            <dd class="am-text-xl am-padding-top-sm" id="Cname_div" style="font-weight:bold" ></dd>
+            <dd class="am-text am-padding-top-sm" id="Dengji_div" style="font-weight:bold">Lv：</dd>
+            <dd class="am-text-danger am-padding-top-sm" id="Fensi_div" style="color: red">粉丝数：/dt>
+        </dl>
+    </div>
+    <br/><br/></div>
+
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2">
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active"><a href="#tab1">简介</a></li>
+        <li><a href="#tab4" id="listdiv2" >活动</a></li>
+        <li><a href="#tab5" id="refreshCooppl">留言</a></li>
+    </ul>
+    <div class="am-tabs-bd">
+         <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+     <div> <span class="am-badge am-badge-secondary am-radius">社长</span>
+     <span class="am-badge am-radius" id="Shezhang_div"></span>
+     <span class="am-badge am-badge-secondary am-radius" id="number">人数</span>
+     <span class="am-badge am-radius" id="Renshu_div"></span>
+     <span class="am-badge am-badge-secondary am-radius">创建时间</span>
+     <span class="am-badge am-radius" id="Shijian_div"></span><br/>
+<span class="am-icon-file-text am-text-xs" id="Kouhao_div"> &nbsp;&nbsp;&nbsp;欢迎加入</span><br/>
+<h4>社团风采</h4>
+             <div id="lunbobox">
+                 <div id="toleft">
+                     &lt;</div>
+                 <div class="lunbo" id="tp">
+                 </div>
+                 <div id="toright">&gt;</div>
+                 <ul>
+                     <li></li>
+                     <li></li>
+                     <li></li>
+                     <li></li>
+                     <li></li>
+                 </ul>
+                 <span></span>
+             </div>
+         <h4>社团简介</h4>
+<p id="Jianjie_div"> </p>
+</div>
+             <button id="sure" data-am-modal="" style="width:300px; " type="submit" rel="ok" class="am-btn am-btn-success am-round  am-center ">关注</button>
+    </div>
+        <div class="am-tab-panel am-fade" id="tab4">
+     
+<ul class="am-nav">
+  <li class="am-active"><a href="#">最近活动</a></li>
+</ul>
+          <div >
+              <ul class="am-list am-list-border" id="huodong_div"></ul>
+          </div>
+        </div>
+        <div class="am-tab-panel am-fade" id="tab5">
+          <div id="pinglun_div"></div>
+            <from class="am-form" method="post">
+                <div class="am-g am-padding-bottom-sm am-margin-top-lg" style="float: right;bottom: 0px;">
+                          <span class=" am-padding-left-xl am-u-sm-9">
+                              <input type="text" class="am-form-field am-round Discuss_Content" placeholder="：留言" />
+                          </span>
+                    <span class="am-u-sm-3">
+                              <button id="surediscuss" data-am-modal=""  type="button" rel="ok" class="am-btn am-btn-success am-round ">发表</button>
+                          </span>
+                </div>
+            </from>
+</div>
+    </div>
+        <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+            <div class="am-modal-dialog">
+                <div class="am-modal-hd"></div>
+                <div class="am-modal-bd">
+                    发布成功！
+                </div>
+                <div class="am-modal-footer">
+                    <span class="am-modal-btn">确定</span>
+                </div>
+            </div>
+        </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success-join">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                成功关注
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-null">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                内容为空!
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-login">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                你还没得登录哦！
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(function() {
+        //$("#toright").hide();
+        //$("#toleft").hide();
+        $('#toright').hover(function() {
+            $("#toleft").hide()
+        }, function() {
+            $("#toleft").show()
+        })
+        $('#toleft').hover(function() {
+            $("#toright").hide()
+        }, function() {
+            $("#toright").show()
+        })
+    })
+
+    var t;
+    var index = 0;
+    /////自动播放
+    t = setInterval(play, 3000)
+
+    function play() {
+        index++;
+        if (index > 4) {
+            index = 0
+        }
+        // console.log(index)
+        $("#lunbobox ul li").eq(index).css({
+            "background": "#999",
+            "border": "1px solid #ffffff"
+        }).siblings().css({
+            "background": "#cccccc",
+            "border": ""
+        })
+
+        $(".lunbo a ").eq(index).fadeIn(1000).siblings().fadeOut(1000);
+    };
+
+    ///点击鼠标 图片切换
+    $("#lunbobox ul li").click(function() {
+
+        //添加 移除样式
+        //$(this).addClass("lito").siblings().removeClass("lito"); //给当前鼠标移动到的li增加样式 且其余兄弟元素移除样式   可以在样式中 用hover 来对li 实现
+        $(this).css({
+            "background": "#999",
+            "border": "1px solid #ffffff"
+        }).siblings().css({
+            "background": "#cccccc"
+        })
+        var index = $(this).index(); //获取索引 图片索引与按钮的索引是一一对应的
+        // console.log(index);
+
+        $(".lunbo a ").eq(index).fadeIn(1000).siblings().fadeOut(1000); // siblings  找到 兄弟节点(不包括自己）
+    });
+
+    /////////////上一张、下一张切换
+    $("#toleft").click(function() {
+        index--;
+        if (index <= 0) //判断index<0的情况为：开始点击#toright  index=0时  再点击 #toleft 为负数了 会出错
+        {
+            index = 4
+        }
+        console.log(index);
+        $("#lunbobox ul li").eq(index).css({
+            "background": "#999",
+            "border": "1px solid #ffffff"
+        }).siblings().css({
+            "background": "#cccccc"
+        })
+
+        $(".lunbo a ").eq(index).fadeIn(1000).siblings().fadeOut(1000); // siblings  找到 兄弟节点(不包括自己）必须要写
+    }); // $("#imgbox a ")获取到的是一个数组集合 。所以可以用index来控制切换
+
+    $("#toright").click(function() {
+        index++;
+        if (index > 4) {
+            index = 0
+        }
+        console.log(index);
+        $(this).css({
+            "opacity": "0.5"
+        })
+        $("#lunbobox ul li").eq(index).css({
+            "background": "#999",
+            "border": "1px solid #ffffff"
+        }).siblings().css({
+            "background": "#cccccc"
+        })
+        $(".lunbo a ").eq(index).fadeIn(1000).siblings().fadeOut(1000); // siblings  找到 兄弟节点(不包括自己）
+    });
+    $("#toleft,#toright").hover(function() {
+            $(this).css({
+                "color": "black"
+            })
+        },
+        function() {
+            $(this).css({
+                "opacity": "0.3",
+                "color": ""
+            })
+        })
+    ///////鼠标移进  移出
+    $("#lunbobox ul li,.lunbo a img,#toright,#toleft ").hover(
+        ////////鼠标移进
+        function() {
+            $('#toright,#toleft').show()
+            clearInterval(t);
+
+        },
+        ///////鼠标移开
+        function() {
+            //$('#toright,#toleft').hide()
+            //alert('aaa')
+            t = setInterval(play, 3000)
+
+            function play() {
+                index++;
+                if (index > 4) {
+                    index = 0
+                }
+                $("#lunbobox ul li").eq(index).css({
+                    "background": "#999",
+                    "border": "1px solid #ffffff"
+                }).siblings().css({
+                    "background": "#cccccc"
+                })
+                $(".lunbo a ").eq(index).fadeIn(1000).siblings().fadeOut(1000);
+            }
+        })
+    $(document).ready(function() {
+        var paramsString = window.location.search;
+        paramsString  = paramsString.substring(5);
+        var aid = window.atob(paramsString).substring(3);
+
+        $.post('getclub', {aid:aid}, function (rs) {
+            // console.log( aid);
+            var content='';
+            if(rs.success){
+                var data=rs.data;
+                var str=data[0].photo;
+                var strs= new Array();
+                    if(str!=null){
+                    str=str.substring(0,str.length-1);
+                    strs=str.split(";");
+                        for(var i=0;i<strs.length;i++){
+                            content+='<a href="#"><img src="__UPLOAD__/'+strs[i]+'" style="width:500px;height: 300px" /></a>';
+                             }
+                    }
+              $("#tp").html(content);
+                $("#imgs").attr({"src":'__UPLOAD__/'+data[0].Image});
+                $("#Cname_div").text(''+data[0].Club_name);
+                $("#Dengji_div").text('Lv'+data[0].Club_level);
+                $("#Fensi_div").text('粉丝'+data[0].FollowersCount);
+                $("#Renshu_div").text(data[0].Club_population);
+                $("#Shezhang_div").text(data[0].President);
+                $("#Shijian_div").text(data[0].Start_time);
+                $("#Jianjie_div").text(data[0].Content);
+            }
+        });
+
+
+        $('#listdiv2').on("click",function(){
+                $.post('../../index/Index/getActiviTytypeList', {aid:aid}, function (rs) {
+                    var content = '';
+                    if (rs.success) {
+                        var jsonarry = rs.data;
+                        for (var i = 0; i < jsonarry.length; i++) {
+
+                     time = jsonarry[i].Activity_time.substring(0, 5);
+                     console.log(jsonarry[i].Activity_image);
+                     content += '<li id="aid' + jsonarry[i].Activity_ID + '"  class="am-margin-top-xs get" style="border: 0">\
+                <a href="#" class="am-padding-0">\
+                    <div class="am-g am-text-primary">\
+                       <div class="am-u-sm-3 am-padding-0">\
+                          <img style="width: 85px; height:85px; class="am-radius am-img-thumbnail am-padding-0" alt="140*140" src="__UPLOAD__/' + jsonarry[i].Article_image + '"  />\
+                        </div>\
+                        <div class="am-u-sm-9">\
+                              <div class="am-margin-top-0">\
+                                    <div class=" am-text-truncate am-padding-0" style="width: 100%;"><strong><font color="black">' + jsonarry[i].Activity_title + '</font></strong></span>&nbsp;<span  class=" am-fr am-padding-left-xs am-padding-right-xs am-badge  am-margin-top-xs '+jsonarry[i].statusclass+'"><font color="white">' + jsonarry[i].statusstr + '</font></span></div><span class=""><span class="am-icon-send"></span>&nbsp;<font color="black">' + jsonarry[i].Club_name + '</font></span><span class="am-fr am-text-sm" style="color:gray">已约'+jsonarry[i].Activity_orderedNbr+'人</span></br><span class="am-text-sm"><span class="am-icon-history"></span>&nbsp;&nbsp;<font color="black">' + time + '</font></span></div>\
+                                </div>\
+                        </div>\
+                </a>\
+              </li>';
+                         }
+                        $("#huodong_div").html(content);
+                        $('.get ').on('click',function(){
+                            var aid = $(this).attr("id");
+                            var encodeData = window.btoa(aid);
+                            window.location.href='{:url("extra/Index/activity")}?aid='+encodeData;
+                        });
+                    }
+                });
+            });
+
+
+
+
+        $('#refreshCooppl').on("click",discuss());
+            function discuss(){
+            $.post('getUserpl', {aid:aid}, function (rs) {
+                var content = '';
+                if (rs.success) {
+                    var pl = rs.data;
+                    var time;
+                    for (var i = 0; i < pl.length; i++) {
+                        time = pl[i].Discuss_time.substring(5, 10);
+                            content += '<article class="am-comment am-padding-top-sm">\
+  <a href="#">\
+    <img src="'+'__UPLOAD__/' + pl[i].image + '" alt="" class="am-comment-avatar" width="60" height="60"/>\
+  </a>\
+  <div class="am-comment-main">\
+    <header class="am-comment-hd">\
+      <!--<h3 class="am-comment-title">评论标题</h3>-->\
+      <div class="am-comment-meta">\
+        <a href="#link-to-user" class="am-comment-author">' + pl[i].Nickname + '</a>\
+                         留言于' + time + '\
+      </div>\
+    </header>\
+    <div class="am-comment-bd">\
+      ' + pl[i].discuss_Content + '</div>\
+  </div>'
+                    }
+                    $("#pinglun_div").html(content);
+                }
+            });
+            }
+        $('#surediscuss').on("click",function(){
+            $.post("getUserId",{},function(e){
+                if(e!="") {
+                    var Discuss_Content = $(".Discuss_Content").val();
+                    var from = new FormData();
+                    from.append("Discuss_Content", Discuss_Content);
+                    from.append("aid",aid);
+                    var flag = true;
+                    if (Discuss_Content == "") {
+                        flag = false;
+                        $('#my-alert-null').modal('open');
+                        return;
+                    }
+                    else {
+                        flag = true;
+                    }
+                    if (flag) {
+                        $.ajax({
+                            type: 'post',
+                            url: "getdiscuss",
+                            data: from,
+                            dataType: 'json',
+                            contentType: false,
+                            processData: false,
+                            success: function (e) {
+                                console.log(e.data);
+                                if (e.data == 1) {
+
+                                    $('#my-alert-success').modal('open');
+                                    var Discuss_Content = $(".Discuss_Content").val("");
+                                }
+                                discuss();
+                            }
+                        });
+                    }
+                }
+                else{
+
+                    $('#my-alert-login').modal('open');
+
+                }
+            })
+        })
+
+        $('#sure').on("click",function(){
+            $.post("getUserId",{},function(e){
+                console.log(e);
+                if(e!="") {
+                    var from = new FormData();
+                    from.append("aid",aid);
+                    $.ajax({
+                        type: 'post',
+                        url: "joinclub",
+                        data: from,
+                        dataType: 'json',
+                        contentType: false,
+                        processData: false,
+                        success: function (e) {
+                            console.log(e.data);
+                            if (e.data == 1) {
+                                $('#my-alert-success-join').modal('open');
+                            }
+                        }
+                    });
+                }
+                else{
+
+                    $('#my-alert-login').modal('open');
+                    window.location.href='{:url("me/index/login")}';
+                }
+            })
+
+
+    })
+
+        $('#number').on('click',function(){
+            var aaid = "aid"+aid;
+            var encodeData = window.btoa(aaid);
+            window.location.href='{:url("coop/Index/teste")}?aid='+encodeData;
+        });
+
+
+
+
+    });
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  
+</head>
+<body>
+<ul class="am-nav">
+  <li class="am-active" onclick="javascript:history.back()">
+  		<a href="#" ><span class="am-icon-angle-left am-icon-md "></span></a>
+  </li>
+</ul>
+<div>
+  <p class="am-margin-sm am-text-center">申请条件</p>
+  <ul class="am-list am-margin-0">
+    <li><a href="alterperson.html">&nbsp;<font color="#000">有清晰的头像<span id="image" class=""></span></font></a></li>
+    
+    <li><a href="alterperson.html">&nbsp;<font color="#000">合法的用户名<span id="name" class=""></span></font></a></li>
+    
+    <li><a href="alterphone.html">&nbsp;<font color="#000">绑定手机号<span id="phone" class=" "></span></font></a></li>
+</ul>
+<section class="am-panel am-panel-secondary">
+    <header class="am-panel-hd ">
+    <h3 class="am-panel-title am-text-center"><font color="#000">认证特权</font></h3>
+    </header>
+    <div class="am-panel-bd">
+      <ul class="am-list">
+       <li style="border:0px;">
+        <a>
+        <div class="am-g am-text-primary">
+          <div class="am-u-sm-2 am-padding-0">
+              <span class="am-icon-btn am-icon-diamond am-warning"></span>
+          </div>
+          <div class="am-u-sm-10">
+            <div class="am-margin-top-0 am-text-sm">
+               <font color="#000"> <span>独家标识</span></br>
+                <span >享有专属标识,彰显独特身份</span></font>        
+            </div>
+          </div>
+        </div> 
+      </a>
+       </li>
+       <li style="border:0px;">
+        <a>
+        <div class="am-g am-text-primary">
+          <div class="am-u-sm-2 am-padding-0">
+              <span class="am-icon-btn am-icon-thumbs-up am-secondary"></span>
+          </div>
+          <div class="am-u-sm-10">
+            <div class="am-margin-top-0 am-text-sm">
+               <font color="#000"><span>优先推荐</span></br>
+                <span >内容优先推荐,增加曝光快速涨粉</span> </font>       
+            </div>
+          </div>
+        </div>
+      </a>
+       </li>
+      <li style="border:0px;">
+        <a>
+        <div class="am-g am-text-primary">
+          <div class="am-u-sm-2 am-padding-0">
+              <span class="am-icon-btn am-icon-pied-piper-alt am-success"></span>
+          </div>
+          <div class="am-u-sm-10">
+            <div class="am-margin-top-0 am-text-sm">
+               <font color="#000"> <span>更多特权</span></br>
+                <span >更多认证用户专享功能</span>   </font>     
+            </div>
+          </div>
+        </div>
+      </a>
+       </li>
+       
+      </ul>
+
+    </div>
+    </section>
+</div>
+
+<script src="__JS__/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+ 
+  $.post("getUserList",{},function(data){
+    // console.log(data);
+        rs=data.data;
+    // console.log(rs[0].Nickname);
+    if(rs[0].Nickname==""){
+      $("#name").attr({"class":"am-icon-close am-icon-fw am-fr am-padding-right-lg"});
+       }
+    else{
+      $("#name").attr({"class":"am-icon-check am-icon-fw am-fr am-padding-right-lg"});
+    }
+    if(rs[0].image==""){
+      $("#image").attr({"class":"am-icon-close am-icon-fw am-fr am-padding-right-lg"});
+       }
+    else{
+      $("#image").attr({"class":"am-icon-check am-icon-fw am-fr am-padding-right-lg"});
+    }
+    if(rs[0].Telephone==""){
+      $("#phone").attr({"class":"am-icon-close am-icon-fw am-fr am-padding-right-lg"});
+       }
+    else{
+      $("#phone").attr({"class":"am-icon-check am-icon-fw am-fr am-padding-right-lg"});
+    }
+
+  }).error(function(){
+          $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'异常.png" />')
+        });
+})
+
+</script>
+
+<script src="__JS__/amazeui.min.js"></script>
+</body>
+</html>

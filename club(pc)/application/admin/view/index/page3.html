@@ -1,0 +1,134 @@
+{extend name="index/public/base"/}
+{block name="layer1"}
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">首页</a>
+        </li>
+        <li>
+            <a href="#">社团管理</a>
+        </li>
+        <li class="active">文章发布</li>
+    </ul>
+{/block}
+{block name="layer2"}
+    <h1>
+        社团管理
+        <small>
+            <i class="fa fa-angle-right"></i>
+           文章发布
+        </small>
+    </h1>
+{/block}
+{block name="body"}
+   <div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header ">
+                <span class="widget-caption">文章发布</span>
+                <div class="widget-buttons">
+                    <a href="#" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a href="#" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <a href="#" data-toggle="dispose">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="table-toolbar">
+                    <div>
+                   
+                    </div>
+                </div>
+                <!---->
+                        <div class="widget flat radius-bordered">
+                            <div class="widget-header bg-blue">
+                                <span class="widget-caption">文章信息</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="registration-form">
+                                    <form role="form" id="b_form" action="saveBook" method="post" enctype="multipart/form-data" >
+                                       
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <h3 class="input-icon icon-left">
+                                                       标题
+                                                    </h3>
+                                                    <input type="text" name="b_name"  class="form-control" placeholder="请输入标题">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <h3 class="input-icon icon-left">
+                                                       副标题
+                                                    </h3>
+                                                    <input name="b_isbn" type="text" class="form-control" placeholder="请输入副标题">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <h3 class="input-icon icon-left">
+                                                       内容
+                                                    </h3>
+                                                    <textarea  name="b_version"  style="width:300px;height:300px;" class="form-control" ></textarea>
+                                                  
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6" style="width:200px;height:100px;" >
+                                                <div class="form-group">
+                                                    <h3 class="input-icon icon-left">
+                                                       图片
+                                                    </h3>
+                                                   
+                                                      <input  type="file"  name="imgs[]" style="position: relative;top:100px;left:0;"   class="form-control"  multiple="multiple" >
+                                                    
+                                                  
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                
+                                
+                                <button   onclick="submitBook()" class="btn btn-blue">提交</button>
+                               
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                   
+                <!---->
+
+
+            </div>
+        </div>
+    </div>
+{/block}
+
+{block name="js_area"}
+<script type="text/javascript">
+ function submitBook(){ 
+                 //$("#b_form").submit();
+                   //  $.post(
+                   //    'saveBook',
+                   //    function(rs){
+                   //            if(rs){
+                   //              alert("保存成功");
+                   //            }else{
+                   //              alert("保存失败");
+                   //            }
+                   //        }
+                   // );
+           
+ }
+</script>
+{/block}

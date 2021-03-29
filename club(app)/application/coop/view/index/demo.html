@@ -1,0 +1,193 @@
+
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="image/png" href="__IMG__/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+    <link rel="stylesheet" href="__CSS__/heartstyle.css"/>
+    <style type="text/css">
+        input{
+            background-color: transparent; border:0px;
+        }
+    </style>
+</head>
+<body>
+<ul class="am-avg-sm-3 am-thumbnails am-margin-bottom-xs am-text-primary " style="margin:0px; background: #01AAED; color: white;">
+    <li onclick="javascript:history.back()"><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" ></span></li>
+    <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;创建社团</span></li>
+</ul>
+<form class="am-form" method="post">
+    <div class="am-g am-padding-left-sm am-padding-right-sm">
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4">社团头像:</div>
+            <div class="am-u-sm-8">
+                <div class="am-form-group am-form-file">
+                    <button type="button" class="am-btn am-btn-default am-btn-sm" id="photo">
+                        <i class="am-icon-cloud-upload"></i> 选择要上传的照片</button>
+                    <input type="file" class="file1">
+                </div>
+            </div>
+        </div>
+
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4">社团名称：</div>
+            <div class="am-u-sm-8"> <input type="text" class="Club_name" id="doc-ipt-email-1" placeholder="" style="border-top:none;border-right:none;border-left:none;"></div>
+        </div>
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4">社团分类:</div>
+            <div class="am-u-sm-8">
+                <select class="select1" id="doc-select-1" style="border-top:none;border-right:none;border-left:none;">
+                    <option value="1" >娱乐</option>
+                    <option value="2">乐器</option>
+                    <option value="3">公益</option>
+                    <option value="4">文学</option>
+                </select>
+            </div>
+        </div>
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4">社团创始人:</div>
+            <div class="am-u-sm-8">
+                <input type="text" class="creat" id="doc-ipt-email-1" placeholder="" style="border-top:none;border-right:none;border-left:none;">
+            </div>
+        </div>
+
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4" style="margin:auto;padding-top:20px">社团简介:</div>
+            <div class="am-u-sm-8">
+                <textarea class="introduce" rows="3" id="doc-ta-1" style="border-top:none;border-right:none;border-left:none;"></textarea></div>
+        </div>
+        <div class="am-g am-margin-top-sm">
+            <div class="am-u-sm-4">认证照片:</div>
+            <div class="am-u-sm-8">
+                <div class="am-form-group am-form-file">
+                    <button type="button" class="am-btn am-btn-default am-btn-sm" id="img">
+                        <i class="am-icon-cloud-upload"></i> 选择要上传的照片</button>
+                    <input type="file" class="file2"  multiple="multiple">
+                </div>
+            </div>
+        </div>
+            <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+            <button id="sure" data-am-modal="" style="width:350px; " type="button" rel="ok" class="am-btn am-btn-success am-round  am-center ">提交申请</button>
+
+
+</form>
+<!--在这里编写你的代码-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<script src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $('#sure').on('click',function(){
+            var flag=true;
+            var Club_name=$(".Club_name").val();
+            // console.log(activityname);
+            var Category=$(".select1 option:selected").val();
+            console.log(Category)
+            var creat=$(".creat").val();
+            // console.log(address);
+            var introduce=$(".introduce").val();
+            // console.log(introduce);
+            // var filed=$(".filed").val()
+            // var filed=$(".filed").files[0];
+
+            var img1=$('.file1').get(0).files[0];
+            console.log(img1)
+            var files=$('.file2').get(0).files;
+            console.log(files)
+            var from = new FormData();
+
+            from.append("img", img1);
+            // console.log(img1);
+            for(let i=0;i<files.length;i++){
+            from.append("file"+i, files[i]);
+            // console.log("file"+i)
+            }
+            // from.append("file2", img2);
+            from.append("clubname",Club_name);
+            from.append("creat",creat);
+            from.append("Category",Category);
+            from.append("introduce",introduce);
+
+            // var from = new FormData();
+            // var img=$('.filed').get(0).files[0];
+            //   console.log(img)
+            //     from.append("file",img);
+            // console.log(from);
+            // console.log(filed);
+            var flag=true;
+            if(Club_name=="" || creat=="" || Category=="" ||  introduce== "" || img1==undefined ){
+                flag=false;
+            }
+            else{
+                flag=true;
+            }
+            console.log(flag)
+            if(flag){
+                $.ajax({
+                    type: 'post',
+                    url:"creatClub",
+                    data:from,
+                    dataType:'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (e) {
+                        console.log(e.data)
+                        if(e.data==1){
+                            $('#my-alert-success').modal('open');
+                            var Club_name=$(".Club_name").val("");
+                            var creat=$(".creat").val("");
+                            var introduce=$(".introduce").val("");
+                            return;
+                        }
+                        $('#my-alert-failure').modal('open');
+
+                    }
+                });
+            }
+            else{
+                $('#my-alert-full').modal('open');
+            }
+
+        });
+
+    });
+
+</script>
+
+
+
+</body>
+</html>

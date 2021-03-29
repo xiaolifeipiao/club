@@ -1,0 +1,117 @@
+{extend name="../../common/view/mobile/base"/}
+{block name="titlename"}
+  社团
+{/block}
+{block name="header"}
+<style type="text/css">
+    .am-thumbnail {
+    display: block;
+    padding: 2px;
+    margin-bottom: 2rem;
+    background-color: #fff;
+     border: 0; 
+    border-radius: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+</style>
+{/block}
+{block name="body"}
+<!--在这里编写你的代码-->
+<style>
+    #sticky{position: fixed; z-index: 999; bottom: 100px; right:15px;_position:absolute;_top:expression(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight + 30);overflow:hidden;*zoom:1;}
+
+
+</style>
+   <div class="am-u-sm-8" style="width: 100%; margin-top:10px">
+        <div class="am-input-group am-input-group-primary " >
+            <span class="am-input-group-btn" >
+                <button class="am-btn am-btn-primary am-round" type="button"><span class="am-icon-search"></span></button>
+            </span>
+            <a href="test"><input type="text" class="am-form-field am-round " placeholder="搜索"/></a>
+        </div>
+    </div>
+    <br/><br/>
+<div id="list_div">
+  
+</div>
+{/block}
+{block name="footer"}
+<script >
+
+   flag=true;
+$(document).ready(function(){
+      refreshCoopList();
+    $('#sticky').on("click",function(){
+        $.post("getUserId",{},function(e){
+            console.log(e);
+            if(e!="") {
+                window.location.href='demo.html';
+            }
+            else{
+
+                $('#my-alert-login').modal('open');
+            }
+        })
+    })
+});
+
+   function refreshCoopList(){
+        var strInput =$("#nameInput").val();
+        var selectVal = $("#serverList").val();
+        $.post('getClubList',{str:strInput,sltSort:selectVal},function(data){
+            var content = '';
+            if(data.success){
+                    var coopdata = data.data;
+                    for(var j = 0;j<coopdata.length;j++){
+                    content+='<div class="am-panel-group " style="margin-bottom: 0px;" id="accordion">\
+                                <div class="am-panel am-panel-default ">\
+                                <div class="am-panel-hd">\
+                                    <h4 class="am-panel-title" data-am-collapse="{parent: \'#accordion\', target: \'#do-not-say-'+j+'\'} ">'+coopdata[j].CT_title+'</h4>\ \
+                                    </div>\
+        <div id="do-not-say-'+j+'" class="am-panel'
+        // if(j==0){
+            content+='am-collapse.am-ine"';
+        // } else{
+        //     content+=' am-collapse"';
+        // }
+        content+='<div class="am-panel-bd">\
+                <div class="am-g"><ul class="am-avg-sm-3 am-thumbnails am-u-sm-12">';
+                    var data = coopdata[j].data;
+                    for(var i = 0;i<data.length;i++){
+                        content+='<li><a href="#" id="aid'+data[i].Club_id+'" class="get">' +
+                            '<samp class="am-thumbnail">' +
+                            '<img class="am-radius" alt="140*140" src="__UPLOAD__/'+data[i].Image+'"  style="width: 100px; height: 100px;" >' +
+                            '<p class="am-thumbnail-caption am-center" id="haguua" style="text-align: center"><strong>'+data[i].Club_name+'</strong></p>' +
+                            '</samp></a> </li>';
+            
+                    }
+                    content+='</ul></div></div></div></div></div>';
+}
+
+
+                if(content=='')
+                      content+='<div style="text-align:center;color:red;";><h3>抱歉,没有找到!</h3></div>';
+                                  $("#list_div").html(content);
+                $('.get ').on('click',function() {
+                    var aid = $(this).attr("id");
+                    var encodeData = window.btoa(aid);
+                    window.location.href = 'shetuan2.html?aid=' + encodeData;
+                });
+            }
+        });
+    }
+
+
+    //  function Tiaozhuan(C_id){
+
+    //     window.location.href="Index/getClubList1?c_id="+C_id;
+        
+
+    // }
+             
+       
+
+</script>
+
+{/block}

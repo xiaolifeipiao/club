@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="__CSS__/loginstyle.css" />
+    <style type="text/css">
+    select{
+        background:#2d2d2d;
+         border: 1px solid rgba(0,0,0,0.1); 
+         color: rgba(45,45,45,.2); 
+         text-indent: 10px; 
+         line-height: 30px; 
+         font-size: 14px;
+         border-radius: 5px;
+        width:305px;
+        height: 40px;
+        margin-top:25px;
+        
+        background:rgba(45,45,45,.2)
+     }
+     
+</style>
+</head>
+
+
+<body>
+<div class="register-container">
+    <h1>注册</h1>
+    
+    <form action="" method="post" id="registerForm">
+        <div>
+            <input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
+        </div>
+        <div>
+            <input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+        </div>
+        <div>
+            <input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
+        </div>
+        <div class="select">
+             <select style="color:rgba(45,45,45,.2)"  id="select" name="select">
+             <option id="" value="0" selected="selected">重庆电子工程职业学院</option>
+             <option id="sexnan" value="1">重庆医科大学</option>
+             <option id="sexnv" value="2">重庆师范大学</option>
+             </select>   
+        </div>
+        <div>
+            <input type="text" name="phone_number" class="phone_number" placeholder="输入手机号码" autocomplete="off" id="number"/>
+        </div>
+        <div>
+            <input type="email" name="email" class="email" placeholder="输入邮箱地址" oncontextmenu="return false" onpaste="return false" />
+        </div>
+
+        <button id="submit" type="submit">注 册</button>
+    </form>
+    <a href="login.html">
+        <button type="button" class="register-tis">已经有账号？</button>
+    </a>
+
+</div>
+</br>
+</br>
+<p id="success" style="display: none;">注册成功,去登录吧</p>
+<p id="error" style="display: none;">注册失败</p>
+
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript">
+//打开字滑入效果
+window.onload = function(){
+    $(".connect p").eq(0).animate({"left":"0%"}, 600);
+    $(".connect p").eq(1).animate({"left":"0%"}, 400);
+};
+//jquery.validate表单验证
+$(document).ready(function(){
+    $("#select").on('click',function(){
+        $(this).css({"color":"#fff"});
+    })
+    
+    //登陆表单验证
+    $("#loginForm").validate({
+        // submitHandler:function(form){
+        // alert("success"); 
+        // $.post('getlogin',{username:$("input[name='username']").val(),password:$("input[name='password']").val()},function(data){
+        //         console.log(data.success)
+        //     })
+        // },   
+        rules:{
+            username:{
+                required:true,//必填
+                minlength:2, //最少6个字符
+                maxlength:32,//最多20个字符
+            },
+            password:{
+                required:true,
+                minlength:3, 
+                maxlength:32,
+            },
+        },
+        //错误信息提示
+        messages:{
+            username:{
+                required:"必须填写用户名",
+                minlength:"用户名至少为2个字符",
+                maxlength:"用户名至多为32个字符",
+                remote: "用户名已存在",
+            },
+            password:{
+                required:"必须填写密码",
+                minlength:"密码至少为3个字符",
+                maxlength:"密码至多为32个字符",
+            },
+        },
+
+    });
+    //注册表单验证
+    $("#registerForm").validate({
+        submitHandler:function(form){
+            $.post("postregister",{username:$(".username").val(),password:$(".confirm_password").val(),phone:$(".phone_number").val(),email:$(".email").val()},function(e){
+                if(e.success){
+                    $('#success').show();
+                    $(".username").val("");
+                    $(".confirm_password").val("");
+                    $(".phone_number").val("");
+                    
+                    $(".password").val("");
+                    $(".email").val("");
+                    setTimeout(function(){
+                        window.location.href="login.html";
+                    },1000)
+                    
+
+                
+                }
+                else{
+                   $('#error').show();
+                }
+            })
+            
+        },   
+        rules:{
+            username:{
+                required:true,//必填
+                minlength:2, //最少6个字符
+                maxlength:32,//最多20个字符
+                remote:{
+                    url:"cheakName",//用户名重复检查，别跨域调用
+                    type:"post",
+                },
+            },
+            password:{
+                required:true,
+                minlength:3, 
+                maxlength:32,
+            },
+            email:{
+                required:true,
+                email:true,
+            },
+            confirm_password:{
+                required:true,
+                minlength:3,
+                equalTo:'.password'
+            },
+            phone_number:{
+                required:true,
+                phone_number:true,//自定义的规则
+                digits:true,//整数
+            }
+        },
+        //错误信息提示
+        messages:{
+            username:{
+                required:"必须填写用户名",
+                minlength:"用户名至少为3个字符",
+                maxlength:"用户名至多为32个字符",
+                remote: "用户名已存在",
+            },
+            password:{
+                required:"必须填写密码",
+                minlength:"密码至少为3个字符",
+                maxlength:"密码至多为32个字符",
+            },
+            email:{
+                required:"请输入邮箱地址",
+                email: "请输入正确的email地址"
+            },
+            confirm_password:{
+                required: "请再次输入密码",
+                minlength: "确认密码不能少于3个字符",
+                equalTo: "两次输入密码不一致",//与另一个元素相同
+            },
+            phone_number:{
+                required:"请输入手机号码",
+                digits:"请输入正确的手机号码",
+            },
+        
+        },
+    });
+    //添加自定义验证规则
+    jQuery.validator.addMethod("phone_number", function(value, element) { 
+        var length = value.length; 
+        var phone_number = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/ 
+        return this.optional(element) || (length == 11 && phone_number.test(value)); 
+    }, "手机号码格式错误"); 
+});
+
+</script>
+<!--背景图片自动更换-->
+<script src="__JS__/supersized.3.2.7.min.js"></script>
+<script src="__JS__/supersized-init.js"></script>
+<!--表单验证-->
+<script src="__JS__/jquery.validate.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+</head>
+<body>
+<ul class="am-nav" style="background:#01AAED; color: white; height:40px;">
+  <li class="am-active">
+      <span onclick="javascript:history.back()" class="am-icon-angle-left am-icon-md am-margin-left-sm am-margin-top-xs">&nbsp;&nbsp;社团管理</span>
+      <span id="creatclub" class="am-fr am-margin-right-sm am-margin-top-xs">创建</span>
+  </li>
+</ul>
+<ul style="width:95%" class="am-list am-list-border am-center" id="list_div">
+   <li>
+                <a href="#" class="am-padding-0">
+                    <div class="am-g am-text-primary">
+                       <div class="am-u-sm-3 am-padding-0">
+        
+                          <img  class="am-radius am-img-thumbnail am-padding-0" style="border:0px;" alt="140*140" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="70px" height="70px" />
+        
+                        </div>
+                        <div class="am-u-sm-7">
+                              <div class="am-margin-top-0">
+                                       <span>吉他社</span></br>
+                                       <div class="am-text-xs am-text-truncate am-padding-0" style="width: 160px;">吉他社的介绍ashcvan anaskmv JKJK  kads</div>
+                                       <span class="am-text-xs"><span class="am-icon-history"></span>&nbsp;11月30日</span></
+                                       
+         
+                                       </div>
+                                </div>
+                          
+                        </div>
+                        <div class="am-u-sm-2 am-padding-right-0">
+                          <p  style="text-align: center;"><span class="am-icon-trash am-icon-sm "></span></p>
+                           <p class="am-margin-0"  style="text-align: center;"><span class="am-icon-pencil am-icon-sm "></span></p>    
+                          </div>
+                </a>
+               </li> 
+</ul>
+
+
+    
+      
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-failure">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      删除失败！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      删除成功！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+          
+          
+    
+        
+
+<!--在这里编写你的代码-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      refreshMeList();
+      $("#creatclub").on('click',function(){
+        window.location.href='{:url("coop/Index/demo")}';
+      })
+    });
+
+    function refreshMeList(){
+        $.post('getMyClub',{},function(rs){
+            var content = '';
+            console.log(rs);
+            if(rs.success){
+              var coopdata = rs.data;   
+              for(var i = 0;i<coopdata.length;i++){
+                var time=coopdata[i].Start_time.substring(0,10);
+                console.log(time);
+               content+=' <li  >'+
+                  '<div class="am-g am-text-primary">'+
+                       '<div class="am-u-sm-3 am-padding-0">'+
+                          '<img  style="width: 70px; height:70px; class="am-radius am-img-thumbnail am-padding-0" style="border:0px;" alt="140*140" src="'+'__UPLOAD__/'+coopdata[i].Image+'" width="70px" height="70px" />'+
+
+                        '</div>'+
+                        '<div class="am-u-sm-7">'+
+                              '<div class="am-margin-top-0">'+
+                                       '<span><font color="#666">'+coopdata[i].Club_name+'</font></span></br>'+
+                                       '<div class="am-text-xs am-text-truncate am-padding-0" style="width: 200px;"><font color="#666">'+coopdata[i].Content+'</font></div>'+
+                                       '<span class="am-text-xs"><font color="#a2a2a2"><span class="am-icon-history"></span></font>&nbsp;<font color="#666">'+time+'</font></span></br>'+
+                                       '</div>'+
+                                '</div>'+
+                        '<div class="am-u-sm-2 am-padding-right-0">'+
+                          '<p id="aid'+coopdata[i].Club_id+'"  class="shanchu am-margin-0"  style="text-align: center;"><font color="#666"><span class="am-icon-trash am-icon-sm am-margin-top-xs"></span></font></p>'+
+                           '<p id="aid'+coopdata[i].Club_id+'"  class="alter am-margin-0"  style="text-align: center;"><font color="#666"><span class="am-icon-pencil am-icon-sm am-margin-top-sm"></span></font></p> '+  
+                    '</div>'+
+
+              '</li>';
+            }
+            if(content==""){
+                $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'社团.png" />')
+                return;
+
+              }
+              $("#list_div").html(content);
+              $('.alter').on('click',function(){ 
+                var aid = $(this).attr("id");
+                var encodeData = window.btoa(aid);
+                console.log($(this).attr("id"));  
+                window.location.href='{:url("me/Index/alterclubinfo")}?aid='+encodeData;
+                });
+              $('.shanchu').on("click",function(){
+                  var aid = $(this).attr("id").substring(3);
+                  $.post("delClubInfo",{aid:aid},function(e){
+                        if(e.data==1){
+                          $('#my-alert-success').modal('open');
+                          refreshMeList();
+                          return;
+                        }
+                        $('#my-alert-failure').modal('open');
+                  });
+                 
+                  
+              }); 
+            }
+        });
+    }
+</script>
+
+<script src="__JS__/amazeui.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+  
+  
+
+
+

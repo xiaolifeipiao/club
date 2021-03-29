@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+    <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        #list{
+            padding-left: 0px;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+<body style="background-color: #FFF;">
+<ul class="am-avg-sm-3 am-thumbnails am-margin-bottom-xs am-text-primary " style="margin:0px; background: #01AAED; color: white;">
+    <li onclick="javascript:history.back()"><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" ></span></li>
+    <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;社团成员</span></li>
+
+</ul>
+<ul id="list" class="am-list am-list-static am-list-border am-list-striped">
+
+</ul>
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var paramsString = window.location.search;
+        paramsString  = paramsString.substring(5);
+        var aid = window.atob(paramsString).substring(3);
+        console.log(aid);
+        $.post('numberPeople', {aid:aid}, function (rs) {
+            var content = '';
+            if (rs.success) {
+                var data = rs.data;
+
+                    var str=data[0].Club_master;
+                    var strs= new Array();
+                    if(str!=null){
+                        str=str.substring(0,str.length-1);
+                        strs=str.split(";");
+                        console.log(str);
+                        for (var i = 0; i < strs.length; i++) {
+                    content += '<li  class="get" >\n' +
+                            '<p class="am-text-right am-padding-right-sm am-margin-bottom-sm">'+strs[i]+'</p>'
+                        '</li>';
+                    }}else{
+                        content += '<p class="am-center">该社团暂时没有成员</p>';
+
+                } $("#list").html(content);
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

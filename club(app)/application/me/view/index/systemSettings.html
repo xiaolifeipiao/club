@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="__IMG__/_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <style type="text/css">
+    input{
+      width: 200px;
+      border:1px solid white;
+    }
+    textarea{
+      border:1px solid white;
+    }
+</style>
+
+  
+</head>
+<body>
+<ul class="am-nav">
+  <li class="am-active" ><a onclick="javascript:history.back()" href="#" class="am-padding-left-xs am-icon-angle-left am-icon-md">&nbsp;设置</a></li>
+</ul>
+
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-0" />
+<p class="am-margin-0" style="background-color: #F0F0F0; width:100%; height:25px;"></p>
+
+<ul class="am-list am-margin-0">
+    <li><a href="clearSession.html" id="qiehaun">&nbsp;<font color="#000">账号切换<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+    <li><a href="alterphone.html">&nbsp;<font color="#000">手机号<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg am-padding-left-xs"></span><span class="am-fr am-text-lg"></span></font></a></li>
+    <p class="am-margin-0" style="background-color: #F0F0F0; width:100%; height:25px;"></p>
+    <li><a href="alterpassword.html">&nbsp;<font color="#000">密码设置<span class="am-icon-angle-right am-icon-md am-icon-fw am-fr am-padding-right-lg"></span></font></a></li>
+    <li id="clear"><a href="#">&nbsp;<font color="#000">清除缓存<span id="clear1" class=" am-fr am-padding-right-lg">3MB</span></font></a></li>  
+    
+    
+    
+    <p class="am-margin-0" style="background-color: #F0F0F0; width:100%; height:25px;"></p>
+      <li id="cheak"><a href="#">&nbsp;<font color="#000">检查版本<span class="   am-fr am-padding-right-lg">1.0.0</span></font></a></li>
+    
+    
+    <p class="am-margin-0" style="background-color: #F0F0F0; width:100%; height:25px;"></p>
+    <li><a href="clearSession.html" id="quit" class="am-center am-text-lg" style="width:100px; "><font color="#000">退出登录</font></a></li>
+</ul>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      清除成功！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+  <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success1">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      已是最行版本！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#quit,#qiehaun').on('click',function(){
+        window.location="login.html";
+    });
+    $('#cheak').on('click',function(){
+         $('#my-alert-success1').modal('open');
+    })
+    clear();
+})
+function clear(){
+    $("#clear").on('click',function(){
+        $.post('clear',{},function(rs){
+            if(rs.data="success"){
+                console.log("ok");
+                $("#clear1").text('0MB');
+                 $('#my-alert-success').modal('open');
+            }
+
+
+        })
+    })
+}
+</script>
+<script src="__JS__/amazeui.min.js"></script>
+</body>
+</html>
+
+

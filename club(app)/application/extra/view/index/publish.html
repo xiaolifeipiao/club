@@ -1,0 +1,353 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Hello Amaze UI</title>
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="__IMG__/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+
+  <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+  <link rel="stylesheet" href="__CSS__/app.css">
+    <style type="text/css">
+        input{
+            background-color: transparent; border:0px;
+        }
+    </style>
+</head>
+<body>
+<ul class="am-avg-sm-3 am-thumbnails am-margin-bottom-xs am-text-primary " style="margin:0px; background: #01AAED; color: white;">
+    <li><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" onclick="self.location=document.referrer;"></span></li>
+    <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;发布活动</span></li>
+</ul>
+<form class="am-form" method="post">
+   <div class="am-g am-padding-left-sm am-padding-right-sm am-margin-top-lg">
+    <div class="am-g am-margin-top-sm">
+        <div class="am-u-sm-4">活动名称：</div>
+        <div class="am-u-sm-8"> <input type="text"  class="activityname" id="doc-ipt-email-1" placeholder="" style="border-top:none;border-right:none;border-left:none;"></div>
+    </div>
+
+    <div class="am-g am-margin-top-sm">
+        <div class="am-u-sm-4">社团选择:</div>
+        <div class="am-u-sm-8">
+            <select  class="select" id="doc-select-1" style="border-top:none;border-right:none;border-left:none;">
+                
+            </select>
+            </div>
+    </div>
+
+    <div class="am-g am-margin-top-sm">
+        <div class="am-u-sm-4">活动类型:</div>
+        <div class="am-u-sm-8">
+            <select  class="select1" id="doc-select-1" style="border-top:none;border-right:none;border-left:none;">     
+            </select>
+            </div>
+    </div>
+    <div class="am-g am-margin-top-sm">
+        <div class="am-u-sm-4">开始活动时间</div>
+        <div class="am-u-sm-8">
+            <input type="datetime-local"  class="starttime" id="doc-ipt-email-1" placeholder="" style="border-top:none;border-right:none;border-left:none;">
+        </div>
+    </div>
+    <div class="am-g am-margin-top-sm">
+        <div class="am-u-sm-4">结束活动时间</div>
+        <div class="am-u-sm-8">
+            <input type="datetime-local"  class="endtime" id="doc-ipt-email-1" placeholder="" style="border-top:none;border-right:none;border-left:none;">
+        </div>
+    </div>
+    <div class="am-g am-margin-top-sm">
+        <div class="am-u-sm-4">活动地点</div>
+        <div class="am-u-sm-8">
+            <input type="text"  class="address" id="doc-ipt-email-1" placeholder="" style="border-top:none;border-right:none;border-left:none;">
+        </div>
+    </div>
+
+    <div class="am-g am-margin-top-sm">
+        <div class="am-u-sm-4" style="margin:auto;padding-top:20px">活动简介:</div>
+        <div class="am-u-sm-8">
+            <textarea  class="introduce" rows="3" id="doc-ta-1" style="border-top:none;border-right:none;border-left:none;"></textarea></div>
+    </div>
+       <div class="am-g am-margin-top-sm">
+           <div class="am-u-sm-4">活动照片:</div>
+           <div class="am-u-sm-8">
+               <div class="am-form-group am-form-file">
+                   <button type="button" class="am-btn am-btn-default am-btn-sm" id="image">
+                       <i class="am-icon-cloud-upload"></i> 选择要上传的照片</button>
+                   <input type="file"  class="filed">
+               </div>
+       </div>
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+    <button id="sure" data-am-modal="" style="width:350px; " type="button" rel="ok" class="am-btn am-btn-success am-round  am-center ">提交申请</button>
+
+
+</form>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-failure">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      发布失败！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      发布成功！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-full">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      请填写完善信息！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<!--在这里编写你的代码-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+
+<script src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+     $(document).ready(function(){
+      $.post('cheakUserClub',{},function(e){
+        var content='';
+          for(let i =0;i<e.data.length;i++){
+            content+='<option id="'+e.data[i].Club_id+'" value="option1" >'+e.data[i].Club_name+
+            '</option>';
+          }
+          $('.select').html(content);
+
+          })
+      $.post('cheakUserType',{},function(e){
+        var content1='';
+          for(let i =0;i<e.data.length;i++){
+            content1+='<option id="'+e.data[i].Category_id+'" value="option1" >'+e.data[i].Category_title+
+            '</option>';
+          }
+          $('.select1').html(content1);
+
+        })
+
+      $('.activityname').blur(function(){
+        if($(this).val()==""){
+           $(this).css({"background":"red"})
+          $(this).attr({"placeholder":"活动名称为空"});
+        }
+        else{
+          $(this).css({"background":""})
+          $(this).attr({"placeholder":""});
+        }
+      });
+       $('.address').blur(function(){
+        if($(this).val()==""){
+          $(this).css({"background":"red"})
+          $(this).attr({"placeholder":"活动地点为空"});
+        }
+        else{
+          $(this).css({"background":""})
+          $(this).attr({"placeholder":""});
+        }
+      });
+
+       $('.introduce').blur(function(){
+        if($(this).val()==""){
+          $(this).css({"background":"red"})
+          $(this).attr({"placeholder":"活动介绍为空"});
+        }
+        else{
+          $(this).css({"background":""})
+          $(this).attr({"placeholder":""});
+        }
+      });
+       $('.starttime').blur(function(){
+        if($(this).val().length==0){
+          $(this).css({"background":"red"})
+          
+        }
+        else{
+          $(this).css({"background":""})
+         
+        }
+      });
+       $('.endtime').blur(function(){
+        console.log($('.endtime').val().replace('T',' '))
+        var res= compareTime($('.starttime').val().replace('T',' '),$(this).val().replace('T',' '));
+        if(res<1){
+             $(this).css({"background":"red"})
+        }
+        else if(res==2){
+           $(this).css({"background":"red"})
+        }
+        else{
+          $(this).css({"background":""})
+        }
+      });
+  function compareTime(startTime,endTime) {
+  var startTimes = startTime.substring(0, 10).split('-');
+  var endTimes = endTime.substring(0, 10).split('-');
+  startTime = startTimes[1] + '-' + startTimes[2] + '-' + startTimes[0] + ' ' + startTime.substring(10, 16);
+  
+  endTime = endTimes[1] + '-' + endTimes[2] + '-' + endTimes[0] + ' ' + endTime.substring(10, 16);
+  // console.log(endTime);
+  var thisResult = (Date.parse(endTime) - Date.parse(startTime)) / 3600 / 1000;
+  if (thisResult < 0) {
+    return -1;
+  } else if (thisResult > 0) {
+    return 1;
+  } else if (thisResult == 0) {
+    return 0;
+  } else {
+    return 2;
+  }
+}
+$('#sure').on('click',function(){
+  var flag=true;
+    var activityname=$(".activityname").val();
+    // console.log(activityname);
+    var club_id=$(".select option:selected").attr('id');
+    console.log(club_id);
+    var Category_id=$(".select1 option:selected").attr('id');
+    console.log(Category_id);
+    var starttime=$(".starttime").val().length;
+    // console.log(starttime);
+    var endtime=$(".endtime").val().length;
+    // console.log(endtime);
+    var time =$(".starttime").val().replace('T',' ').substring(5)+" "+$(".endtime").val().replace('T',' ').substring(5);
+    console.log(time)
+    var address=$(".address").val();
+    // console.log(address);
+    var introduce=$(".introduce").val();
+    // console.log(introduce);
+    // var filed=$(".filed").val()
+    // var filed=$(".filed").files[0];
+    var from = new FormData();
+    var img=$('.filed').get(0).files[0];
+    console.log(img)
+    from.append("file", img);
+    from.append("activityname",activityname);
+    from.append("club_id",club_id);
+    from.append("Category_id",Category_id);
+    from.append("time",time);
+    from.append("address",address);
+    from.append("introduce",introduce);
+
+    // var from = new FormData();
+    // var img=$('.filed').get(0).files[0];
+    //   console.log(img)
+    //     from.append("file",img);  
+    console.log(from);
+    // console.log(filed);
+    if(activityname=="" || starttime==0 || endtime==0 || address=="" || introduce== "" || img==undefined ){
+      flag=false;
+    }
+    else{
+        flag=true;
+        }
+    console.log(flag)
+    if(flag){  
+      $.ajax({
+              type: 'post',
+              url:"postActivity",
+              data:from,
+              dataType:'json',
+              contentType: false,
+              processData: false,
+              success: function (e) {
+                console.log(e.data)
+                  if(e.data==1){
+                    $('#my-alert-success').modal('open');
+                    var activityname=$(".activityname").val("");
+                      var address=$(".address").val("");
+                      var introduce=$(".introduce").val("");
+
+                    return;
+                  }
+                   $('#my-alert-failure').modal('open');
+                  
+                }
+            });               
+        }
+        else{         
+            $('#my-alert-full').modal('open');
+           }
+      
+    });                  
+      
+    
+
+    //  $.post('getMyApplyList',{aid:aid},(data)=>{
+    //     if(data.data==null){
+    //         $("#sure").attr({'rel':'ok','class':'am-btn  am-round am-btn-success am-center'});
+    //         $("#sure").text("我要报名");
+    //     }
+    
+    //     else{
+    //         if(data.data.flag==1){
+    //             $("#sure").attr({'rel':'no','class':'am-btn  am-round am-btn-danger am-center'});
+    //             $("#sure").text("已报名");
+    //         }
+    //         else if(data.data.flag==0){
+    //             $("#sure").attr({'rel':'no','class':'am-btn  am-round am-btn-warning am-center'});
+    //             $("#sure").text("审核中");
+    //         }
+    
+    //     }
+    
+    // });
+    //     $('#sure').on('click',function(){
+    //         let tag;
+    //         if($(this).attr('rel')==='ok'){
+    //             $(this).attr({'rel':'no','class':'am-btn  am-round am-btn-warning am-center'});
+    //             $(this).text("审核中");
+    //             tag=1;
+    //         }
+    //         else{
+    //             $(this).attr({'rel':'ok','class':'am-btn  am-round am-btn-success am-center'});
+    //             $(this).text("我要报名");
+    //             tag=0;
+    //         }
+    //         $.post('myApply',{tag:tag,aid:aid},(rs)=>{
+    
+    //         });
+    //     })
+   });
+</script>
+</body>
+</html>

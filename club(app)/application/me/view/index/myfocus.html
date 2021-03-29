@@ -1,0 +1,136 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+</head>
+<body>
+<ul class="am-avg-sm-3 am-thumbnails am-margin-bottom-xs am-text-primary " style="margin:0px; background: #01AAED; color: white;">
+  <li><span class="am-margin-top-xs am-padding-left-xs am-icon-angle-left am-icon-md" onclick="javascript:history.back()"></span></li>
+  <li><span class="am-margin-top-xs am-center am-text-lg am-padding-right-xs">&nbsp;&nbsp;我的关注</span></li>
+  
+</ul>
+ <hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-top-0" />
+  <div class="am-g am-text-primary">
+    <div class="am-u-sm-5 am-padding-right-0">
+        
+            <img  id="imgs" class="am-circle am-img-thumbnail" alt="140*140" src="__IMG__/p2.jpg" width="80%" height="80%" />
+        
+    </div>
+    <div class="am-u-sm-6 am-padding-left-0">
+        <div class="am-margin-top-sm ">
+          <span class="am-text-xl " id="username"></span></br>
+          <div class="am-text-xs am-text-truncate" style="width: 150px; padding: 10px;" id="usersign"></div>
+         
+        </div>
+    </div>
+    <br/>
+    <br/>
+  </div>
+  <ul class="am-list" id="list_div"> 
+ </ul>
+<!--在这里编写你的代码-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      getMe();
+      getMyfocus();
+    });
+    function getMe(){
+      $.post('getUserList',{},function(data){
+        if(data.success){
+          var userdata = data.data;
+                    $('#username').text(userdata[0].Nickname);
+                    $('#imgs').attr({"src":'__UPLOAD__/'+userdata[0].image});
+                    
+                    $('#usersign').text(userdata[0].Signature);
+        }
+      }).error(function(){
+          $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'异常.png" />')
+        });
+    }
+    function getMyfocus(){
+
+        $.post('getMyfocus',{},function(rs){
+            var content = '';  
+            if(rs.success){
+              var userdata = rs.data;
+              for(var i = 0;i<userdata.length;i++){
+               content+=' <li>\
+                             <a href="#">\
+                              <div class="am-g ">\
+                                   <div class="am-u-sm-2 am-padding-right-0" style="margin-top: 5px;">\
+                                   <img  class="am-circle am-img-thumbnail am-padding-right-0" alt="140*140" src="'+userdata[i].userimage+'" width="60px" height="60px" />\
+                                   </div>\
+                              <div class="am-u-sm-10">\
+                              <div class="am-margin-top-0">\
+                              <span>'+userdata[i].username+'</span></br>\
+                              <div class="am-text-xs am-text-truncate" style="width: 250px; padding-right: 10px;">'+userdata[i].usersign+'</div>\
+                              </div>\
+                              </div>\
+                              </div>\
+                            </a>\
+                          </li>';
+            }
+                $("#list_div").html(content);
+            }
+        }).error(function(){
+          $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'异常.png" />')
+        });
+    }
+</script>
+
+<script src="__JS__/amazeui.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+

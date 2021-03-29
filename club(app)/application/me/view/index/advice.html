@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Hello Amaze UI</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="icon" type="../../_img/png" href="__IMG__/i/favicon.png">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="__IMG__/i/app-icon72x72@2x.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="__IMG__/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css">
+    <link rel="stylesheet" href="__CSS__/app.css">
+     <!-- 窗口缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <style type="text/css">
+    
+    textarea{
+      border:1px solid white;
+      width: 100%;
+      overflow: auto;
+      word-break: break-all;
+    }
+    /* 隐藏默认的上传控件 */
+/*input[type=file] {
+  dispaly: none;
+}*/
+
+/* 自定义上传按钮样式 */
+.upload {
+  
+}
+</style>
+
+  
+</head>
+<body>
+<ul class="am-nav">
+  <li class="am-active" onclick="javascript:history.back()">
+  		<a href="#" ><span class="am-icon-angle-left am-icon-md "></span></a>
+  </li>
+</ul>
+<p  class=" am-margin-bottom-0">&nbsp;&nbsp;故障时间<span id="time" class="am-fr am-padding-right-xl">
+  <span class="sj">
+  <span></span>-<span></span>-<span></span>&nbsp;<span></span>:<span></span>:<span></span></span></span></p>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-bottom-0"/>
+<form id="advice" class="">
+<div>
+	<label class="am-checkbox am-secondary am-margin-left-lg">
+ 		<input type="checkbox" name="checkname" value="功能异常：功能异常或不可以用" data-am-ucheck > 功能异常：功能异常或不可以用
+	</label>
+	<hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-bottom-0 am-margin-top-0" />
+	<label class="am-checkbox am-secondary am-margin-left-lg">
+       <input type="checkbox" name="checkname" value="产品建议：用的不爽，我有意见" data-am-ucheck> 产品建议：用的不爽，我有意见
+    </label>
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-bottom-0 am-margin-top-0" />
+    <label class="am-checkbox am-secondary am-margin-left-lg">
+       <input type="checkbox" name="checkname" value="其他问题" data-am-ucheck> 其他问题
+    </label>
+	<hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-top-0" />
+
+</div>
+
+<div>
+	&nbsp;&nbsp;<span>请补充详细问题和意见</span>
+  <hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-0" />
+ <textarea style="
+    padding-left: 8px;" class=""cols=50 rows=8  id="doc-ta-1" name="description">请输入不少于10个字的描述</textarea>
+	
+</div>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default am-margin-top-0" />
+<button id="sure" data-am-modal="" style="width:90%; " type="button" class="am-btn am-center am-btn-success am-round am-btn-primary am-center ">提交</button>
+</div>
+<form/>
+</br>
+</br>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-failure">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+     你的反馈已提交过了！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-success">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"></div>
+    <div class="am-modal-bd">
+      提交成功！
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<script src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/amazeui.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+  postAdiceInfo();
+  $('textarea').on('focus',()=>{
+    $('textarea').val("");
+  })
+  
+  function time() {
+    var date = new Date();
+    var n = date.getFullYear();
+    var y = date.getMonth()+1;
+    var t = date.getDate();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    $('.sj span').eq(0).html(n);
+    $('.sj span').eq(1).html(y);
+    $('.sj span').eq(2).html(t);
+    $('.sj span').eq(3).html(h);
+    $('.sj span').eq(4).html(m);
+    $('.sj span').eq(5).html(s);
+    for (var i = 0; i < $('div').length; i++) {
+      if ($('div').eq(i).text().length == 1) {
+        $('div').eq(i).html(function(index, html) {
+          return 0 + html;
+        });
+      }
+    }
+  }
+  time();
+  setInterval(time, 1000); 
+});
+function postAdiceInfo(){
+     $("#sure").on('click',function(){
+      var checkname="";
+      $("#advice").find('input:checkbox').each(function() { //遍历所有复选框
+      if ($(this).prop('checked') == true) {
+        checkname+=$(this).val();
+       
+      }
+    });
+       //打印当前选中的复选框的值
+     console.log(checkname);
+     var description=$('textarea').val();
+     console.log(description); 
+     var datatime= $('#time').text().trim();
+    console.log(datatime);
+    $.post('AdiceInfo',{'datatime':datatime,'checkname':checkname,'description':description},function(data){ 
+      console.log(data);  
+      if(data.data==0){
+        $('#my-alert-failure').modal('open');
+        
+        $('textarea').val("请输入不少于10个字的描述");
+       
+      }else{
+        $('#my-alert-success').modal('open');
+        $('textarea').val("请输入不少于10个字的描述");
+      }
+      
+    }).error(function(){
+          $('#list_div').html('<img class="am-img-responsive " alt="140*140" src="'+'__IMG__/'+'异常.png" />')
+        });
+    checkname="";
+   
+  });
+
+}
+
+</script>
+</body>
+</html>
